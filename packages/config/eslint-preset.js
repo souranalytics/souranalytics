@@ -33,7 +33,7 @@ module.exports = {
     'simple-import-sort/imports': [
       'error',
       {
-        groups: [['^\\u0000'], ['^@?\\w'], ['^'], ['^lib'], ['^ui'], ['^\\.']]
+        groups: [['^\\u0000'], ['^@?\\w'], ['^'], ['^shared'], ['^\\.']]
       }
     ],
     'sort-destructure-keys/sort-destructure-keys': 'error',

@@ -1,13 +1,15 @@
-import { FunctionComponent } from 'react'
+import { Button } from 'shared/components/button'
+import { PageLayout } from 'shared/layouts/page'
+import { NextPageWithLayout } from 'shared/types/next'
 
-import { Button } from 'ui'
-
-const Home: FunctionComponent = () => (
+const Home: NextPageWithLayout = () => (
   <div>
-    <h1>Gherkin</h1>
+    <h1 className="text-2xl font-bold">Gherkin</h1>
 
-    <Button />
+    <Button className="mt-6">Hello</Button>
   </div>
 )
+
+Home.getLayout = (page) => <PageLayout title="Gherkin">{page}</PageLayout>
 
 export default Home
