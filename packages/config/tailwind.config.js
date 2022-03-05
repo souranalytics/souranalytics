@@ -9,11 +9,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.teal
+        primary: colors.emerald
       }
     },
     fontFamily: {
-      sans: ['Inter var', 'sans-serif']
+      sans: ['Satoshi', 'sans-serif']
     }
   },
   plugins: []

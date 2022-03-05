@@ -1,9 +1,23 @@
 /* fonts */
 
-@import url('https://rsms.me/inter/inter.css');
+@import url('https://api.fontshare.com/css?f[]=satoshi@1&display=swap');
 
 /* tailwind */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* global */
+
+::selection {
+  @apply text-white bg-primary-800;
+}
+
+body {
+  @apply cursor-default text-neutral-200 bg-neutral-900;
+}
+
+a {
+  @apply transition-colors text-primary-400;
+}

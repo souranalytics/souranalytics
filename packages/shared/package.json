@@ -8,6 +8,7 @@
     "lint": "eslint . --ext ts,tsx"
   },
   "dependencies": {
+    "date-fns": "^2.28.0",
     "tailwind-merge": "^1.2.0"
   },
   "devDependencies": {
