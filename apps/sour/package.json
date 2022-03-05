@@ -3,10 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "db:dev": "env-cmd -f .env.local prisma migrate dev",
+    "db:generate": "env-cmd -f .env.local prisma generate",
+    "db:migrate": "env-cmd -f .env.production prisma migrate deploy",
+    "db:push": "env-cmd -f .env.local prisma db push",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
   },
   "dependencies": {
     "next": "12.1.0",
@@ -18,8 +22,10 @@
     "@types/node": "^17.0.21",
     "@types/react": "17.0.39",
     "config": "*",
+    "env-cmd": "^10.1.0",
     "eslint": "8.10.0",
     "next-transpile-modules": "9.0.0",
+    "prisma": "^3.10.0",
     "tsconfig": "*",
     "typescript": "^4.6.2"
   }

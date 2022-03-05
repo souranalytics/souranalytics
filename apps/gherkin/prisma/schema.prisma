@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// enums
+
+enum CollaboratorRole {
+  owner
+  member
+  developer
+}
+
+enum ItemStatus {
+  draft
+  planned
+  ready
+  enabled
+}
+
+enum PropertyType {
+  boolean
+  number
+  string
+}
+
+// models
+
+model Pricing {
+  id String @id
+
+  name    String
+  price   Float
+  visible Boolean
+
+  collaborators Int
+  events        Int
+  plans         Int
+  properties    Int
+  views         Int
+
+  apps App[]
+}
+
+model Workspace {
+  id String @id @default(cuid())
+
+  name     String
+  stripeId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  apps          App[]
+  collaborators Collaborator[]
+}
+
+model Collaborator {
+  id String @id @default(cuid())
+
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+  workspaceId String
+
+  userId String
+
+  role CollaboratorRole
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model App {
+  id String @id @default(cuid())
+
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+  workspaceId String
+
+  pricing   Pricing @relation(fields: [pricingId], references: [id])
+  pricingId String
+
+  name String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  apiKeys    ApiKey[]
+  events     Event[]
+  properties Property[]
+  views      View[]
+}
+
+model ApiKey {
+  id String @id @default(cuid())
+
+  app   App    @relation(fields: [appId], references: [id])
+  appId String
+
+  name String
+  key  String @default(uuid())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+// data
+
+model View {
+  id String @id @default(cuid())
+
+  app   App    @relation(fields: [appId], references: [id])
+  appId String
+
+  name        String
+  description String?
+  details     String?
+  status      ItemStatus @default(draft)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  events     Event[]
+  properties Property[]
+}
+
+model Event {
+  id String @id @default(cuid())
+
+  app   App    @relation(fields: [appId], references: [id])
+  appId String
+
+  name        String
+  description String?
+  details     String?
+  status      ItemStatus @default(draft)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  properties Property[]
+  views      View[]
+}
+
+model Property {
+  id String @id @default(cuid())
+
+  app   App    @relation(fields: [appId], references: [id])
+  appId String
+
+  name        String
+  type        PropertyType
+  description String?
+  details     String?
+  status      ItemStatus   @default(draft)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  events Event[]
+  views  View[]
+}
