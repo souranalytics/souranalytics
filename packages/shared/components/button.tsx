@@ -8,7 +8,7 @@ type Props = {
 export const Button: FunctionComponent<Props> = ({ children, className }) => (
   <button
     className={twMerge(
-      'bg-primary-600 text-white font-semibold p-3 rounded-md leading-none transition-colors hover:bg-primary-500 focus:ring focus:ring-primary-400 focus:ring-opacity-50',
+      'bg-primary-600 text-white font-semibold p-3 rounded-md leading-none transition-colors hover:bg-primary-500 active:bg-primary-700 focus:ring focus:ring-primary-400 focus:ring-opacity-50',
       className
     )}>
     {children}

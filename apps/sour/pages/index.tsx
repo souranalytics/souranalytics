@@ -1,3 +1,4 @@
+import { PieChartIcon, RowsIcon } from '@iconicicons/react'
 import Link from 'next/link'
 
 import { Button } from 'shared/components/button'
@@ -14,20 +15,28 @@ const Home: NextPageWithLayout = () => (
 
     <Button className="mt-6">Get started</Button>
 
-    <section className="flex flex-col w-full mt-12 lg:flex-row">
+    <section className="flex flex-col w-full mt-24 lg:flex-row">
       <Link href={process.env.NEXT_PUBLIC_URL_PICKLE}>
-        <a className="flex-1">
-          <h2 className="text-2xl font-semibold text-primary-600">Pickle</h2>
-          <p className="mt-2 text-neutral-600">
-            Privacy and developer-first analytics
-          </p>
+        <a className="flex items-center flex-1 p-3 transition-shadow rounded-lg bg-primary-50 hover:ring-2 hover:ring-primary-600">
+          <PieChartIcon className="w-12 h-12 text-black" />
+
+          <div className="flex-1 ml-3">
+            <h2 className="text-2xl font-semibold text-primary-600">Pickle</h2>
+            <p className="text-neutral-600">
+              Privacy and developer-first analytics
+            </p>
+          </div>
         </a>
       </Link>
 
       <Link href={process.env.NEXT_PUBLIC_URL_GHERKIN}>
-        <a className="flex-1 mt-6 lg:mt-0 lg:ml-6">
-          <h2 className="text-2xl font-semibold text-primary-600">Gherkin</h2>
-          <p className="mt-2 text-neutral-600">Plan your analytics approach</p>
+        <a className="flex items-center flex-1 p-3 mt-6 transition-shadow rounded-lg bg-primary-50 hover:ring-2 hover:ring-primary-600 lg:mt-0 lg:ml-6">
+          <RowsIcon className="w-12 h-12 text-black" />
+
+          <div className="flex-1 ml-3">
+            <h2 className="text-2xl font-semibold text-primary-600">Gherkin</h2>
+            <p className="text-neutral-600">Plan your analytics approach</p>
+          </div>
         </a>
       </Link>
     </section>

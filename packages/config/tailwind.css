@@ -19,5 +19,5 @@ body {
 }
 
 a {
-  @apply transition-colors text-primary-400;
+  @apply transition-colors text-primary-600;
 }
