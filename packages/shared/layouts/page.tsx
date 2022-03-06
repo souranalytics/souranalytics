@@ -25,6 +25,10 @@ export const PageLayout: FunctionComponent<Props> = ({
   const footerLinks: Array<Array<FooterLink>> = [
     [
       {
+        href: process.env.NEXT_PUBLIC_URL_SOUR,
+        label: 'Sour Analytics'
+      },
+      {
         href: process.env.NEXT_PUBLIC_URL_PICKLE,
         label: 'Pickle'
       },
