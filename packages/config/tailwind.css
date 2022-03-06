@@ -11,11 +11,11 @@
 /* global */
 
 ::selection {
-  @apply text-white bg-primary-800;
+  @apply text-black bg-primary-200;
 }
 
 body {
-  @apply cursor-default text-neutral-200 bg-neutral-900;
+  @apply cursor-default text-neutral-800 bg-neutral-100;
 }
 
 a {

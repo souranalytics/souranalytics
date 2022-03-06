@@ -13,6 +13,7 @@ const Home: NextPageWithLayout = () => (
 Home.getLayout = (page) => (
   <PageLayout
     className="flex flex-col items-start justify-center"
+    site="pickle"
     title="Pickle">
     {page}
   </PageLayout>
