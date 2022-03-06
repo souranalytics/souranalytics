@@ -1,0 +1,68 @@
+{
+  "environments": [
+    {
+      "id": "sour-analytics",
+      "name": "Sour Analytics",
+      "region": "eu-west-1",
+      "source": {
+        "branch": "main"
+      },
+      "services": [
+        {
+          "id": "sour-analytics",
+          "name": "Sour Analytics",
+          "type": "fargate",
+          "cpu": 0.25,
+          "memory": 0.5,
+          "domain": "souranalytics.com",
+          "minInstances": 1,
+          "maxInstances": 1,
+          "installCommand": "yarn",
+          "buildCommand": "yarn prisma && yarn build",
+          "startCommand": "cd apps/sour && yarn start",
+          "envVariables": {
+            "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
+            "NEXT_PUBLIC_URL_PICKLE": "https://pickle.souranalytics.com",
+            "NEXT_PUBLIC_URL_SOUR": "https://souranalytics.com"
+          }
+        },
+        {
+          "id": "pickle",
+          "name": "Pickle",
+          "type": "fargate",
+          "cpu": 0.25,
+          "memory": 0.5,
+          "domain": "pickle.souranalytics.com",
+          "minInstances": 1,
+          "maxInstances": 1,
+          "installCommand": "yarn",
+          "buildCommand": "yarn prisma && yarn build",
+          "startCommand": "cd apps/pickle && yarn start",
+          "envVariables": {
+            "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
+            "NEXT_PUBLIC_URL_PICKLE": "https://pickle.souranalytics.com",
+            "NEXT_PUBLIC_URL_SOUR": "https://souranalytics.com"
+          }
+        },
+        {
+          "id": "gherkin",
+          "name": "Gherkin",
+          "type": "fargate",
+          "cpu": 0.25,
+          "memory": 0.5,
+          "domain": "gherkin.souranalytics.com",
+          "minInstances": 1,
+          "maxInstances": 1,
+          "installCommand": "yarn",
+          "buildCommand": "yarn prisma && yarn build",
+          "startCommand": "cd apps/gherkin && yarn start",
+          "envVariables": {
+            "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
+            "NEXT_PUBLIC_URL_PICKLE": "https://pickle.souranalytics.com",
+            "NEXT_PUBLIC_URL_SOUR": "https://souranalytics.com"
+          }
+        }
+      ]
+    }
+  ]
+}
