@@ -18,7 +18,7 @@
           "minInstances": 1,
           "maxInstances": 1,
           "installCommand": "yarn",
-          "buildCommand": "yarn prisma && yarn build",
+          "buildCommand": "yarn build",
           "startCommand": "cd apps/sour && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
@@ -36,7 +36,7 @@
           "minInstances": 1,
           "maxInstances": 1,
           "installCommand": "yarn",
-          "buildCommand": "yarn prisma && yarn build",
+          "buildCommand": "yarn build",
           "startCommand": "cd apps/pickle && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
@@ -54,7 +54,7 @@
           "minInstances": 1,
           "maxInstances": 1,
           "installCommand": "yarn",
-          "buildCommand": "yarn prisma && yarn build",
+          "buildCommand": "yarn build",
           "startCommand": "cd apps/gherkin && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
