@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import { fetchProfile } from '../auth/auth'
-import { Profile } from '../types/profile'
+import { fetchProfile } from '../../auth/auth'
+import { Profile } from '../../types/profile'
 
 type Returns = {
   error?: string
