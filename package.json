@@ -16,7 +16,6 @@
     "dev": "turbo run dev --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
-    "postinstall": "yarn db:generate",
     "prepare": "husky install",
     "start": "turbo run start"
   },
