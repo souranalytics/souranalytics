@@ -10,6 +10,7 @@
     "db:push": "env-cmd -f .env.local prisma db push",
     "db:seed": "env-cmd -f .env.local prisma db seed",
     "dev": "next dev --port 3002",
+    "generate": "prisma generate",
     "lint": "next lint",
     "start": "next start"
   },

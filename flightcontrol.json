@@ -17,12 +17,15 @@
           "domain": "souranalytics.com",
           "minInstances": 1,
           "maxInstances": 1,
-          "buildCommand": "turbo run db:generate build --scope=sour-analytics",
+          "buildCommand": "turbo run generate build --scope=sour-analytics",
           "startCommand": "cd apps/sour && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
             "NEXT_PUBLIC_URL_PICKLE": "https://pickle.souranalytics.com",
-            "NEXT_PUBLIC_URL_SOUR": "https://souranalytics.com"
+            "NEXT_PUBLIC_URL_SOUR": "https://souranalytics.com",
+            "DATABASE_URL": {
+              "fromParameterStore": "fc.souranalytics.env.sour-analytics.207714lx.SOUR_DATABASE_URL"
+            }
           }
         },
         {
@@ -34,12 +37,15 @@
           "domain": "pickle.souranalytics.com",
           "minInstances": 1,
           "maxInstances": 1,
-          "buildCommand": "turbo run db:generate build --scope=pickle",
+          "buildCommand": "turbo run generate build --scope=pickle",
           "startCommand": "cd apps/pickle && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
             "NEXT_PUBLIC_URL_PICKLE": "https://pickle.souranalytics.com",
-            "NEXT_PUBLIC_URL_SOUR": "https://souranalytics.com"
+            "NEXT_PUBLIC_URL_SOUR": "https://souranalytics.com",
+            "DATABASE_URL": {
+              "fromParameterStore": "fc.souranalytics.env.sour-analytics.x47614fl.PICKLE_DATABASE_URL"
+            }
           }
         },
         {
@@ -51,12 +57,15 @@
           "domain": "gherkin.souranalytics.com",
           "minInstances": 1,
           "maxInstances": 1,
-          "buildCommand": "turbo run db:generate build --scope=gherkin",
+          "buildCommand": "turbo run generate build --scope=gherkin",
           "startCommand": "cd apps/gherkin && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
             "NEXT_PUBLIC_URL_PICKLE": "https://pickle.souranalytics.com",
-            "NEXT_PUBLIC_URL_SOUR": "https://souranalytics.com"
+            "NEXT_PUBLIC_URL_SOUR": "https://souranalytics.com",
+            "DATABASE_URL": {
+              "fromParameterStore": "fc.souranalytics.env.sour-analytics.dc7514ia.GHERKIN_DATABASE_URL"
+            }
           }
         }
       ]

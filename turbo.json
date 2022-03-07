@@ -23,6 +23,9 @@
     "dev": {
       "cache": false
     },
+    "generate": {
+      "cache": false
+    },
     "lint": {
       "outputs": []
     },
