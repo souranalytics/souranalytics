@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/sour'
+import { PrismaClient } from '@prisma/sour-analytics'
 
 declare global {
   // eslint-disable-next-line no-var

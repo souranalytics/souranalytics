@@ -1,7 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
-  output          = "../../../node_modules/@prisma/sour"
+  output          = "../../../node_modules/@prisma/sour-analytics"
 }
 
 datasource db {

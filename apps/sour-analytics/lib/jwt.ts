@@ -1,4 +1,4 @@
-import { User } from '@prisma/sour'
+import { User } from '@prisma/sour-analytics'
 import { sign, verify } from 'jsonwebtoken'
 
 import { AuthToken } from '../types/auth'

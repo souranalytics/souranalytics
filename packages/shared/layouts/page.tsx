@@ -13,7 +13,7 @@ type Links = Array<{
   label: string
 }>
 
-type Site = 'sour' | 'pickle' | 'gherkin'
+type Site = 'sour-analytics' | 'pickle' | 'gherkin'
 
 type Props = {
   className?: string
@@ -25,12 +25,12 @@ type Props = {
 export const PageLayout: FunctionComponent<Props> = ({
   children,
   className,
-  site = 'sour',
+  site = 'sour-analytics',
   title,
   user
 }) => {
   const headerLinks: Links = [
-    ...(site !== 'sour'
+    ...(site !== 'sour-analytics'
       ? [
           {
             href: '/pricing',
@@ -57,7 +57,7 @@ export const PageLayout: FunctionComponent<Props> = ({
           {
             href: compact([
               `${process.env.NEXT_PUBLIC_URL_SOUR}/sign-in`,
-              site !== 'sour' &&
+              site !== 'sour-analytics' &&
                 `redirect=${encodeURI(
                   `${
                     site === 'pickle'

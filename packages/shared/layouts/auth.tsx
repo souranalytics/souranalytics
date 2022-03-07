@@ -5,11 +5,8 @@ import { twMerge } from 'tailwind-merge'
 
 import { Logo } from '../components/logo'
 
-export type PageSite = 'sour' | 'pickle' | 'gherkin'
-
 type Props = {
   className?: string
-  site?: PageSite
   title: string
 }
 
