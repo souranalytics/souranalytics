@@ -71,7 +71,7 @@ export const PageLayout: FunctionComponent<Props> = ({
         ])
   ]
 
-  const footerLinks: Array<Links> = [
+  const footerLinks: Array<Links> = compact([
     [
       {
         href: process.env.NEXT_PUBLIC_URL_SOUR,
@@ -86,18 +86,16 @@ export const PageLayout: FunctionComponent<Props> = ({
         label: 'Gherkin'
       }
     ],
-    site !== 'sour-analytics'
-      ? [
-          {
-            href: '/pricing',
-            label: 'Pricing'
-          },
-          {
-            href: '/docs',
-            label: 'Docs'
-          }
-        ]
-      : [],
+    site !== 'sour-analytics' && [
+      {
+        href: '/pricing',
+        label: 'Pricing'
+      },
+      {
+        href: '/docs',
+        label: 'Docs'
+      }
+    ],
     [
       {
         href: `${process.env.NEXT_PUBLIC_URL_SOUR}/account`,
@@ -108,7 +106,7 @@ export const PageLayout: FunctionComponent<Props> = ({
         label: 'Help'
       }
     ]
-  ]
+  ])
 
   return (
     <div className="flex flex-col min-h-screen mx-auto bg-white shadow-sm border-neural-200 lg:border-x max-w-7xl">
