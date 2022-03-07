@@ -18,7 +18,7 @@
           "minInstances": 1,
           "maxInstances": 1,
           "installCommand": "cd apps/sour && yarn",
-          "buildCommand": "cd apps/sour && yarn && yarn build",
+          "buildCommand": "cd apps/sour && yarn build",
           "startCommand": "cd apps/sour && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
@@ -36,7 +36,7 @@
           "minInstances": 1,
           "maxInstances": 1,
           "installCommand": "cd apps/pickle && yarn",
-          "buildCommand": "cd apps/pickle && yarn && yarn build",
+          "buildCommand": "cd apps/pickle && yarn build",
           "startCommand": "cd apps/pickle && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
@@ -54,7 +54,7 @@
           "minInstances": 1,
           "maxInstances": 1,
           "installCommand": "cd apps/gherkin && yarn",
-          "buildCommand": "cd apps/gherkin && yarn && yarn build",
+          "buildCommand": "cd apps/gherkin && yarn build",
           "startCommand": "cd apps/gherkin && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
