@@ -6,25 +6,32 @@ import { jwt } from '../../../../lib/jwt'
 import { prisma } from '../../../../lib/prisma'
 
 const handler: NextApiHandler = async (req, res) => {
-  const accessToken = await github.fetchAccessToken(String(req.query.code))
+  try {
+    const accessToken = await github.fetchAccessToken(String(req.query.code))
 
-  const profile = await github.fetchProfile(accessToken)
-  const email = await github.fetchEmail(accessToken)
+    const email = await github.fetchEmail(accessToken)
 
-  const user = await prisma.user.upsert({
-    create: {
-      ...profile,
-      email
-    },
-    update: {},
-    where: {
-      id: profile.id
-    }
-  })
+    const { avatar, id, name } = await github.fetchProfile(accessToken)
 
-  const token = jwt.sign(user)
+    const user = await prisma.user.upsert({
+      create: {
+        avatar,
+        email,
+        githubId: String(id),
+        name
+      },
+      update: {},
+      where: {
+        email
+      }
+    })
 
-  cookie.set(res, token)
+    const token = jwt.sign(user)
+
+    cookie.set(res, token)
+  } catch {
+    //
+  }
 
   res.redirect('/')
 }

@@ -11,7 +11,9 @@ datasource db {
 }
 
 model User {
-  id Int @id
+  id String @id @default(cuid())
+
+  githubId String?
 
   name   String
   email  String @unique

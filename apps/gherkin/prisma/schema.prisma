@@ -68,7 +68,7 @@ model Collaborator {
   workspace   Workspace @relation(fields: [workspaceId], references: [id])
   workspaceId String
 
-  userId Int
+  userId String
 
   role CollaboratorRole
 
