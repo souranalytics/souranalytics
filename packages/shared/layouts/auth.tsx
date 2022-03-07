@@ -1,3 +1,4 @@
+import { getYear } from 'date-fns'
 import Head from 'next/head'
 import Link from 'next/link'
 import { FunctionComponent } from 'react'
@@ -29,5 +30,9 @@ export const AuthLayout: FunctionComponent<Props> = ({
     </header>
 
     <div className={twMerge('p-6', className)}>{children}</div>
+
+    <footer className="p-6 text-sm text-neutral-600">
+      <p>&#169; {getYear(new Date())} Sour Analytics</p>
+    </footer>
   </div>
 )

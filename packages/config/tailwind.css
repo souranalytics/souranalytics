@@ -16,7 +16,7 @@
 }
 
 body {
-  @apply cursor-default text-neutral-800 bg-neutral-100;
+  @apply text-black bg-white cursor-default;
 }
 
 a {

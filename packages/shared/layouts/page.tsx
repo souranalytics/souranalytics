@@ -109,7 +109,7 @@ export const PageLayout: FunctionComponent<Props> = ({
   ])
 
   return (
-    <div className="flex flex-col min-h-screen mx-auto bg-white shadow-sm border-neural-200 lg:border-x max-w-7xl">
+    <div className="flex flex-col min-h-screen mx-auto max-w-7xl">
       <Head>
         <title>{title}</title>
       </Head>
@@ -130,13 +130,7 @@ export const PageLayout: FunctionComponent<Props> = ({
         </nav>
       </header>
 
-      <div
-        className={twMerge(
-          'flex-1 border-y border-neutral-200 p-6',
-          className
-        )}>
-        {children}
-      </div>
+      <div className={twMerge('flex-1 p-6', className)}>{children}</div>
 
       <footer className="flex flex-col p-6 text-sm text-neutral-500 lg:flex-row lg:justify-between">
         <p>
