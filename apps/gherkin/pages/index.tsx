@@ -13,6 +13,9 @@ type Props = {
 const Home: NextPageWithLayout<Props> = () => (
   <>
     <h1 className="text-4xl font-bold">Gherkin</h1>
+    <p className="mt-2 text-2xl font-medium text-neutral-800">
+      Plan your analytics approach
+    </p>
 
     <Button className="mt-6">Get started</Button>
   </>
