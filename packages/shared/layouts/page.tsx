@@ -86,16 +86,18 @@ export const PageLayout: FunctionComponent<Props> = ({
         label: 'Gherkin'
       }
     ],
-    [
-      {
-        href: '/pricing',
-        label: 'Pricing'
-      },
-      {
-        href: '/docs',
-        label: 'Docs'
-      }
-    ],
+    site !== 'sour-analytics'
+      ? [
+          {
+            href: '/pricing',
+            label: 'Pricing'
+          },
+          {
+            href: '/docs',
+            label: 'Docs'
+          }
+        ]
+      : [],
     [
       {
         href: `${process.env.NEXT_PUBLIC_URL_SOUR}/account`,
