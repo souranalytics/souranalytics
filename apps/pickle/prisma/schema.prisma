@@ -1,7 +1,7 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
-  output          = "../node_modules/@prisma/pickle"
+  output          = "../../../node_modules/@prisma/pickle"
 }
 
 datasource db {
