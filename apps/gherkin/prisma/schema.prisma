@@ -1,10 +1,13 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+  output          = "../node_modules/@prisma/gherkin"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 // enums
@@ -65,12 +68,15 @@ model Collaborator {
   workspace   Workspace @relation(fields: [workspaceId], references: [id])
   workspaceId String
 
-  userId String
+  userId BigInt
 
   role CollaboratorRole
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
+
+  @@index([workspaceId])
+  @@index([userId])
 }
 
 model App {
@@ -91,6 +97,9 @@ model App {
   events     Event[]
   properties Property[]
   views      View[]
+
+  @@index([workspaceId])
+  @@index([pricingId])
 }
 
 model ApiKey {
@@ -104,6 +113,8 @@ model ApiKey {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
+
+  @@index([appId])
 }
 
 // data
@@ -124,6 +135,8 @@ model View {
 
   events     Event[]
   properties Property[]
+
+  @@index([appId])
 }
 
 model Event {
@@ -142,6 +155,8 @@ model Event {
 
   properties Property[]
   views      View[]
+
+  @@index([appId])
 }
 
 model Property {
@@ -161,4 +176,6 @@ model Property {
 
   events Event[]
   views  View[]
+
+  @@index([appId])
 }

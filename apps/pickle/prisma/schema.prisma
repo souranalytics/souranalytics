@@ -1,10 +1,13 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+  output          = "../node_modules/@prisma/pickle"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 // enums
@@ -51,12 +54,15 @@ model Collaborator {
   workspace   Workspace @relation(fields: [workspaceId], references: [id])
   workspaceId String
 
-  userId String
+  userId BigInt
 
   role CollaboratorRole
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
+
+  @@index([workspaceId])
+  @@index([userId])
 }
 
 model App {
@@ -77,6 +83,9 @@ model App {
   events  Event[]
   users   User[]
   views   View[]
+
+  @@index([workspaceId])
+  @@index([pricingId])
 }
 
 model ApiKey {
@@ -90,6 +99,8 @@ model ApiKey {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
+
+  @@index([appId])
 }
 
 // data
@@ -107,6 +118,8 @@ model Event {
   meta Json
 
   createdAt DateTime @default(now())
+
+  @@index([appId])
 }
 
 model View {
@@ -122,6 +135,8 @@ model View {
   meta Json
 
   createdAt DateTime @default(now())
+
+  @@index([appId])
 }
 
 model User {
@@ -137,5 +152,5 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
-  @@unique([id, appId])
+  @@unique([appId, id])
 }

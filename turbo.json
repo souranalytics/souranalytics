@@ -17,6 +17,9 @@
     "db:push": {
       "cache": false
     },
+    "db:seed": {
+      "cache": false
+    },
     "dev": {
       "cache": false
     },

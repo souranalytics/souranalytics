@@ -1,18 +1,21 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+  output          = "../node_modules/@prisma/sour"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 model User {
-  id String @id @default(cuid())
+  id BigInt @id
 
-  name     String
-  email    String @unique
-  password String
+  name   String
+  email  String @unique
+  avatar String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt

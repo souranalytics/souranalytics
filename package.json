@@ -8,11 +8,16 @@
   ],
   "scripts": {
     "build": "turbo run build",
+    "db:dev": "turbo run db:dev",
+    "db:generate": "turbo run db:generate",
+    "db:migrate": "turbo run db:migrate",
+    "db:push": "turbo run db:push",
+    "db:seed": "turbo run db:seed",
     "dev": "turbo run dev --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
-    "prepare": "husky install",
-    "prisma": "turbo run db:generate"
+    "postinstall": "yarn db:generate",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "husky": "^7.0.4",

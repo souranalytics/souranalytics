@@ -8,17 +8,21 @@
     "db:generate": "env-cmd -f .env.local prisma generate",
     "db:migrate": "env-cmd -f .env.production prisma migrate deploy",
     "db:push": "env-cmd -f .env.local prisma db push",
+    "db:seed": "env-cmd -f .env.local prisma db seed",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start"
   },
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "next": "12.1.0",
+    "nookies": "^2.5.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "shared": "*"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^17.0.21",
     "@types/react": "17.0.39",
     "config": "*",
@@ -26,7 +30,11 @@
     "eslint": "8.10.0",
     "next-transpile-modules": "9.0.0",
     "prisma": "^3.10.0",
+    "ts-node": "^10.7.0",
     "tsconfig": "*",
     "typescript": "^4.6.2"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }

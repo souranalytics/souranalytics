@@ -8,6 +8,7 @@
     "db:generate": "env-cmd -f .env.local prisma generate",
     "db:migrate": "env-cmd -f .env.production prisma migrate deploy",
     "db:push": "env-cmd -f .env.local prisma db push",
+    "db:seed": "env-cmd -f .env.local prisma db seed",
     "dev": "next dev --port 3002",
     "lint": "next lint",
     "start": "next start"
@@ -27,7 +28,11 @@
     "eslint": "8.10.0",
     "next-transpile-modules": "9.0.0",
     "prisma": "^3.10.0",
+    "ts-node": "^10.7.0",
     "tsconfig": "*",
     "typescript": "^4.6.2"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }
