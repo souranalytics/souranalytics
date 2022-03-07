@@ -1,11 +1,10 @@
-import { FunctionComponent } from 'react'
-import { MouseEvent } from 'react'
+import { FunctionComponent, MouseEventHandler } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 type Props = {
   className?: string
 
-  onClick?: (event: MouseEvent<HTMLButtonElement, MouseEvent>) => unknown
+  onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 export const Button: FunctionComponent<Props> = ({
