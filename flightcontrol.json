@@ -17,8 +17,8 @@
           "domain": "souranalytics.com",
           "minInstances": 1,
           "maxInstances": 1,
-          "buildCommand": "yarn turbo run db:generate build --scope=sour-analytics",
-          "startCommand": "yarn turbo run start --scope=sour-analytics",
+          "buildCommand": "turbo run db:generate build --scope=sour-analytics",
+          "startCommand": "cd apps/sour && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
             "NEXT_PUBLIC_URL_PICKLE": "https://pickle.souranalytics.com",
@@ -34,8 +34,8 @@
           "domain": "pickle.souranalytics.com",
           "minInstances": 1,
           "maxInstances": 1,
-          "buildCommand": "yarn turbo run db:generate build --scope=pickle",
-          "startCommand": "yarn turbo run start --scope=pickle",
+          "buildCommand": "turbo run db:generate build --scope=pickle",
+          "startCommand": "cd apps/pickle && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
             "NEXT_PUBLIC_URL_PICKLE": "https://pickle.souranalytics.com",
@@ -51,8 +51,8 @@
           "domain": "gherkin.souranalytics.com",
           "minInstances": 1,
           "maxInstances": 1,
-          "buildCommand": "yarn turbo run db:generate build --scope=gherkin",
-          "startCommand": "yarn turbo run start --scope=gherkin",
+          "buildCommand": "turbo run db:generate build --scope=gherkin",
+          "startCommand": "cd apps/gherkin && yarn start",
           "envVariables": {
             "NEXT_PUBLIC_URL_GHERKIN": "https://gherkin.souranalytics.com",
             "NEXT_PUBLIC_URL_PICKLE": "https://pickle.souranalytics.com",
