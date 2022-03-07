@@ -17,6 +17,7 @@
           "domain": "souranalytics.com",
           "minInstances": 1,
           "maxInstances": 1,
+          "installCommand": "cd apps/sour && yarn",
           "buildCommand": "cd apps/sour && yarn && yarn build",
           "startCommand": "cd apps/sour && yarn start",
           "envVariables": {
@@ -34,6 +35,7 @@
           "domain": "pickle.souranalytics.com",
           "minInstances": 1,
           "maxInstances": 1,
+          "installCommand": "cd apps/pickle && yarn",
           "buildCommand": "cd apps/pickle && yarn && yarn build",
           "startCommand": "cd apps/pickle && yarn start",
           "envVariables": {
@@ -51,6 +53,7 @@
           "domain": "gherkin.souranalytics.com",
           "minInstances": 1,
           "maxInstances": 1,
+          "installCommand": "cd apps/gherkin && yarn",
           "buildCommand": "cd apps/gherkin && yarn && yarn build",
           "startCommand": "cd apps/gherkin && yarn start",
           "envVariables": {
