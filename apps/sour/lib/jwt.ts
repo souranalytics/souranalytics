@@ -8,7 +8,7 @@ class Jwt {
     return sign(
       {
         email,
-        id: Number(id)
+        id
       },
       process.env.TOKEN_SECRET
     )
