@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { FunctionComponent } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { Logo } from '../components/logo'
+import { Logo } from '../components/common/logo'
 import { Profile } from '../types/profile'
 
 type Links = Array<{

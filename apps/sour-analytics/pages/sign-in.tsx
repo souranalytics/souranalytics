@@ -1,4 +1,4 @@
-import { Button } from 'shared/components/button'
+import { Button } from 'shared/components/common/button'
 import { AuthLayout } from 'shared/layouts/auth'
 import { NextPageWithLayout } from 'shared/types/next'
 

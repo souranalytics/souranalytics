@@ -1,4 +1,4 @@
-import { NotFound } from 'shared/components/not-found'
+import { NotFound } from 'shared/components/common/not-found'
 import { PageLayout } from 'shared/layouts/page'
 import { NextPageWithLayout } from 'shared/types/next'
 

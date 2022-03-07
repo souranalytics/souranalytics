@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next'
 
 import { fetchProfile } from 'shared/auth/auth'
-import { Button } from 'shared/components/button'
+import { Button } from 'shared/components/common/button'
 import { PageLayout } from 'shared/layouts/page'
 import { NextPageWithLayout } from 'shared/types/next'
 import { Profile } from 'shared/types/profile'

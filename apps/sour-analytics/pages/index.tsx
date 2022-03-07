@@ -2,7 +2,7 @@ import { PieChartIcon, RowsIcon } from '@iconicicons/react'
 import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 
-import { Button } from 'shared/components/button'
+import { Button } from 'shared/components/common/button'
 import { PageLayout } from 'shared/layouts/page'
 import { NextPageWithLayout } from 'shared/types/next'
 import { Profile } from 'shared/types/profile'
