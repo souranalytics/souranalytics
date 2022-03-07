@@ -1,7 +1,9 @@
 import { ServerResponse } from 'http'
-import { NextApiRequest, NextApiResponse, NextPageContext } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next'
 import { CookieSerializeOptions } from 'next/dist/server/web/types'
 import nookies from 'nookies'
+
+import { NextPageRequest } from 'shared/types/next'
 
 class Cookie {
   private options: CookieSerializeOptions = {
@@ -12,7 +14,7 @@ class Cookie {
     secure: process.env.NODE_ENV === 'production'
   }
 
-  get(req: NextApiRequest | NextPageContext['req']): string | null {
+  get(req: NextApiRequest | NextPageRequest): string | null {
     const { token } = nookies.get(
       {
         req

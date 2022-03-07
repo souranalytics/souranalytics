@@ -1,24 +1,15 @@
-import { User } from '@prisma/sour'
 import { NextApiHandler } from 'next'
 
-import { cookie } from '../../../lib/cookie'
-import { jwt } from '../../../lib/jwt'
-import { prisma } from '../../../lib/prisma'
+import { Profile } from 'shared/types/profile'
+
+import { getUser } from '../../../lib/auth'
 
 type Data = {
-  user: User
+  user: Profile
 }
 
 const handler: NextApiHandler<Data> = async (req, res) => {
-  const token = cookie.get(req)
-
-  const { email } = jwt.verify(token)
-
-  const user = await prisma.user.findUnique({
-    where: {
-      email
-    }
-  })
+  const user = await getUser(req)
 
   res.json({
     user

@@ -26,6 +26,7 @@
     "config": "*",
     "env-cmd": "^10.1.0",
     "eslint": "8.10.0",
+    "next-compose-plugins": "^2.2.1",
     "next-transpile-modules": "9.0.0",
     "prisma": "^3.10.0",
     "ts-node": "^10.7.0",

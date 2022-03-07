@@ -26,7 +26,7 @@ const handler: NextApiHandler = async (req, res) => {
 
   cookie.set(res, token)
 
-  res.redirect('/app')
+  res.redirect('/')
 }
 
 export default handler

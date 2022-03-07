@@ -6,23 +6,72 @@ import { FunctionComponent } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { Logo } from '../components/logo'
-import { FooterLink } from '../types/components/footer'
+import { Profile } from '../types/profile'
 
-export type PageSite = 'sour' | 'pickle' | 'gherkin'
+type Links = Array<{
+  href: string
+  label: string
+}>
+
+type Site = 'sour' | 'pickle' | 'gherkin'
 
 type Props = {
   className?: string
-  site?: PageSite
+  site?: Site
   title: string
+  user?: Profile
 }
 
 export const PageLayout: FunctionComponent<Props> = ({
   children,
   className,
   site = 'sour',
-  title
+  title,
+  user
 }) => {
-  const footerLinks: Array<Array<FooterLink>> = [
+  const headerLinks: Links = [
+    ...(site !== 'sour'
+      ? [
+          {
+            href: '/pricing',
+            label: 'Pricing'
+          },
+          {
+            href: '/docs',
+            label: 'Docs'
+          }
+        ]
+      : []),
+    ...(user
+      ? [
+          {
+            href: `${process.env.NEXT_PUBLIC_URL_SOUR}/account`,
+            label: 'Account'
+          },
+          {
+            href: `${process.env.NEXT_PUBLIC_URL_SOUR}/api/auth/sign-out`,
+            label: 'Sign out'
+          }
+        ]
+      : [
+          {
+            href: compact([
+              `${process.env.NEXT_PUBLIC_URL_SOUR}/sign-in`,
+              site !== 'sour' &&
+                `redirect=${encodeURI(
+                  `${
+                    site === 'pickle'
+                      ? process.env.NEXT_PUBLIC_URL_PICKLE
+                      : process.env.NEXT_PUBLIC_URL_GHERKIN
+                  }/app`
+                )}`
+            ]).join('?'),
+            label: 'Sign in'
+          }
+        ])
+  ]
+
+  const footerLinks: Array<Links> = [
     [
       {
         href: process.env.NEXT_PUBLIC_URL_SOUR,
@@ -59,18 +108,6 @@ export const PageLayout: FunctionComponent<Props> = ({
     ]
   ]
 
-  const signInLink = compact([
-    `${process.env.NEXT_PUBLIC_URL_SOUR}/sign-in`,
-    site !== 'sour' &&
-      `redirect=${encodeURI(
-        `${
-          site === 'pickle'
-            ? process.env.NEXT_PUBLIC_URL_PICKLE
-            : process.env.NEXT_PUBLIC_URL_GHERKIN
-        }/app`
-      )}`
-  ]).join('?')
-
   return (
     <div className="flex flex-col min-h-screen mx-auto bg-white shadow-sm max-w-7xl">
       <Head>
@@ -85,23 +122,11 @@ export const PageLayout: FunctionComponent<Props> = ({
         </Link>
 
         <nav className="flex">
-          <Link href="/pricing">
-            <a className="font-medium text-black hover:text-primary-600">
-              Pricing
-            </a>
-          </Link>
-
-          <Link href="/docs">
-            <a className="ml-3 font-medium text-black hover:text-primary-600">
-              Docs
-            </a>
-          </Link>
-
-          <Link href={signInLink}>
-            <a className="ml-3 font-medium text-black hover:text-primary-600">
-              Sign in
-            </a>
-          </Link>
+          {headerLinks.map((link, index) => (
+            <NavLink href={link.href} key={index}>
+              {link.label}
+            </NavLink>
+          ))}
         </nav>
       </header>
 
@@ -136,3 +161,15 @@ export const PageLayout: FunctionComponent<Props> = ({
     </div>
   )
 }
+
+type NavLinkProps = {
+  href: string
+}
+
+const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => (
+  <Link href={href}>
+    <a className="ml-3 font-medium text-black first:ml-0 hover:text-primary-600">
+      {children}
+    </a>
+  </Link>
+)
