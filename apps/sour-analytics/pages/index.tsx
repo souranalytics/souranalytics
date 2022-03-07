@@ -25,7 +25,7 @@ const Home: NextPageWithLayout<Props> = () => (
 
     <section className="flex flex-col w-full mt-24 lg:flex-row">
       <Link href={process.env.NEXT_PUBLIC_URL_PICKLE}>
-        <a className="flex items-center flex-1 p-3 transition-shadow rounded-lg bg-primary-50 hover:ring-2 hover:ring-primary-600">
+        <a className="flex items-center flex-1 p-3 transition-shadow rounded-md bg-primary-50 hover:ring-2 hover:ring-primary-600">
           <PieChartIcon className="w-12 h-12 text-black" />
 
           <div className="flex-1 ml-3">
@@ -38,7 +38,7 @@ const Home: NextPageWithLayout<Props> = () => (
       </Link>
 
       <Link href={process.env.NEXT_PUBLIC_URL_GHERKIN}>
-        <a className="flex items-center flex-1 p-3 mt-6 transition-shadow rounded-lg bg-primary-50 hover:ring-2 hover:ring-primary-600 lg:mt-0 lg:ml-6">
+        <a className="flex items-center flex-1 p-3 mt-6 transition-shadow rounded-md bg-primary-50 hover:ring-2 hover:ring-primary-600 lg:mt-0 lg:ml-6">
           <RowsIcon className="w-12 h-12 text-black" />
 
           <div className="flex-1 ml-3">

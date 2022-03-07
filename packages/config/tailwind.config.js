@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   content: [
-    '../../packages/shared/components/common/**/*.tsx',
+    '../../packages/shared/components/**/*.tsx',
     '../../packages/shared/layouts/**/*.tsx',
     'pages/**/*.tsx'
   ],
@@ -13,6 +13,7 @@ module.exports = {
       }
     },
     fontFamily: {
+      mono: ['Roboto Mono', 'monospace'],
       sans: ['Satoshi', 'sans-serif']
     }
   },
