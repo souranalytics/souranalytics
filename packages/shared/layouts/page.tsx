@@ -2,7 +2,7 @@ import { getYear } from 'date-fns'
 import compact from 'lodash/compact'
 import Head from 'next/head'
 import Link from 'next/link'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { Logo } from '../components/common/logo'
@@ -15,12 +15,12 @@ type Links = Array<{
 
 type Site = 'sour-analytics' | 'pickle' | 'gherkin'
 
-type Props = {
+type Props = PropsWithChildren<{
   className?: string
   site?: Site
   title: string
   user?: Profile
-}
+}>
 
 export const PageLayout: FunctionComponent<Props> = ({
   children,
@@ -45,18 +45,18 @@ export const PageLayout: FunctionComponent<Props> = ({
     ...(user
       ? [
           {
-            href: `${process.env.NEXT_PUBLIC_URL_SOUR}/account`,
+            href: `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/account`,
             label: 'Account'
           },
           {
-            href: `${process.env.NEXT_PUBLIC_URL_SOUR}/api/auth/sign-out`,
+            href: `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/api/auth/sign-out`,
             label: 'Sign out'
           }
         ]
       : [
           {
             href: compact([
-              `${process.env.NEXT_PUBLIC_URL_SOUR}/sign-in`,
+              `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/sign-in`,
               site !== 'sour-analytics' &&
                 `redirect=${encodeURI(
                   `${
@@ -74,7 +74,7 @@ export const PageLayout: FunctionComponent<Props> = ({
   const footerLinks: Array<Links> = compact([
     [
       {
-        href: process.env.NEXT_PUBLIC_URL_SOUR,
+        href: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
         label: 'Sour Analytics'
       },
       {
@@ -98,11 +98,11 @@ export const PageLayout: FunctionComponent<Props> = ({
     ],
     [
       {
-        href: `${process.env.NEXT_PUBLIC_URL_SOUR}/account`,
+        href: `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/account`,
         label: 'Account'
       },
       {
-        href: `${process.env.NEXT_PUBLIC_URL_SOUR}/help`,
+        href: `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/help`,
         label: 'Help'
       }
     ]
@@ -156,9 +156,9 @@ export const PageLayout: FunctionComponent<Props> = ({
   )
 }
 
-type NavLinkProps = {
+type NavLinkProps = PropsWithChildren<{
   href: string
-}
+}>
 
 const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => (
   <Link href={href}>

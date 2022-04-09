@@ -1,15 +1,15 @@
 import { getYear } from 'date-fns'
 import Head from 'next/head'
 import Link from 'next/link'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { Logo } from '../components/common/logo'
 
-type Props = {
+type Props = PropsWithChildren<{
   className?: string
   title: string
-}
+}>
 
 export const AuthLayout: FunctionComponent<Props> = ({
   children,

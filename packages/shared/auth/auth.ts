@@ -15,7 +15,7 @@ export const fetchProfile = async (
   const {
     data: { user }
   } = await axios.get('/api/auth/profile', {
-    baseURL: process.env.NEXT_PUBLIC_URL_SOUR,
+    baseURL: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
     headers,
     withCredentials: true
   })
