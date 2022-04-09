@@ -12,12 +12,6 @@ datasource db {
 
 // enums
 
-enum CollaboratorRole {
-  owner
-  member
-  developer
-}
-
 enum ItemStatus {
   draft
   planned
@@ -49,40 +43,9 @@ model Pricing {
   apps App[]
 }
 
-model Workspace {
-  id String @id @default(cuid())
-
-  name     String
-  stripeId String?
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
-
-  apps          App[]
-  collaborators Collaborator[]
-}
-
-model Collaborator {
-  id String @id @default(cuid())
-
-  workspace   Workspace @relation(fields: [workspaceId], references: [id])
-  workspaceId String
-
-  userId String
-
-  role CollaboratorRole
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @default(now()) @updatedAt
-
-  @@index([workspaceId])
-  @@index([userId])
-}
-
 model App {
   id String @id @default(cuid())
 
-  workspace   Workspace @relation(fields: [workspaceId], references: [id])
   workspaceId String
 
   pricing   Pricing @relation(fields: [pricingId], references: [id])
