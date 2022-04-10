@@ -12,13 +12,14 @@
 /* global */
 
 ::selection {
-  @apply text-black bg-primary-200;
+  @apply bg-opacity-50 bg-primary-400;
 }
 
 body {
-  @apply text-black bg-white cursor-default;
+  @apply text-black bg-white cursor-default font-body;
 }
 
 a {
   @apply transition-colors text-primary-600;
 }
+            

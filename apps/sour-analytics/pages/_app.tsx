@@ -2,15 +2,21 @@ import 'config/tailwind.css'
 
 import { FunctionComponent } from 'react'
 
+import { IntlProvider } from 'shared/providers/intl'
 import { AppPropsWithLayout } from 'shared/types/next'
 
 const SourAnalytics: FunctionComponent<AppPropsWithLayout> = ({
   Component,
-  pageProps
+  pageProps,
+  router
 }) => {
   const getLayout = Component.getLayout ?? ((page) => page)
 
-  return getLayout(<Component {...pageProps} />)
+  return (
+    <IntlProvider locale={router.locale}>
+      {getLayout(<Component {...pageProps} />)}
+    </IntlProvider>
+  )
 }
 
 export default SourAnalytics

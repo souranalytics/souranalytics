@@ -35,7 +35,7 @@ Home.getLayout = (page) => (
   <PageLayout
     className="flex flex-col items-center justify-center"
     site="pickle"
-    title="Pricing: Pickle"
+    title="pricing"
     user={page.props.user}>
     {page}
   </PageLayout>

@@ -1,0 +1,16 @@
+{
+  "account": "Account",
+  "copyright": "Copyright © {year} Sour Analytics. All rights reserved.",
+  "docs": "Docs",
+  "get_started": "Get started",
+  "gherkin": "Gherkin",
+  "github": "GitHub",
+  "help": "Help",
+  "not_found": "Not found",
+  "pickle": "Pickle",
+  "pricing": "Pricing",
+  "sign_in": "Sign in",
+  "sign_out": "Sign out",
+  "sour_analytics": "Sour Analytics",
+  "workspaces": "Workspaces"
+}

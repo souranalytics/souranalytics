@@ -6,6 +6,7 @@ module.exports = {
     '../../packages/shared/layouts/**/*.tsx',
     'pages/**/*.tsx'
   ],
+  plugins: [],
   theme: {
     extend: {
       colors: {
@@ -13,9 +14,8 @@ module.exports = {
       }
     },
     fontFamily: {
-      mono: ['Roboto Mono', 'monospace'],
-      sans: ['Satoshi', 'sans-serif']
+      body: ['Satoshi', 'sans-serif'],
+      code: ['Roboto Mono', 'monospace']
     }
-  },
-  plugins: []
+  }
 }

@@ -30,7 +30,7 @@ const Account: NextPageWithLayout<Props> = ({ user }) => (
 Account.getLayout = (page) => (
   <PageLayout
     className="flex flex-col items-center justify-center"
-    title="Account: Sour Analytics"
+    title="account"
     user={page.props.user}>
     {page}
   </PageLayout>

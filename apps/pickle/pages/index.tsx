@@ -25,7 +25,6 @@ Home.getLayout = (page) => (
   <PageLayout
     className="flex flex-col items-start justify-center"
     site="pickle"
-    title="Pickle"
     user={page.props.user}>
     {page}
   </PageLayout>

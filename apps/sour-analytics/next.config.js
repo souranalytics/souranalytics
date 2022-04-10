@@ -3,6 +3,10 @@ const withTM = require('next-transpile-modules')(['shared'])
 
 /** @type {import('next').NextConfig} */
 const config = {
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en']
+  },
   reactStrictMode: true
 }
 

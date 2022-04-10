@@ -8,7 +8,7 @@ Error.getLayout = (page) => (
   <PageLayout
     className="flex flex-col items-start justify-center"
     site="pickle"
-    title="Not found">
+    title="not_found">
     {page}
   </PageLayout>
 )
