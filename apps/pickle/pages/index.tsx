@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next'
+import { useTranslations } from 'next-intl'
 
 import { fetchProfile } from 'shared/auth/auth'
 import { Button } from 'shared/components/common/button'
@@ -11,16 +12,20 @@ type Props = {
   user: Nullable<Profile>
 }
 
-const Home: NextPageWithLayout<Props> = () => (
-  <>
-    <h1 className="text-4xl font-bold">Pickle</h1>
-    <p className="mt-2 text-2xl font-medium text-neutral-800">
-      Privacy and developer-first analytics
-    </p>
+const Home: NextPageWithLayout<Props> = () => {
+  const t = useTranslations()
 
-    <Button className="mt-6">Get started</Button>
-  </>
-)
+  return (
+    <>
+      <h1 className="text-4xl font-bold">{t('pickle')}</h1>
+      <p className="mt-2 text-2xl font-medium text-neutral-800">
+        {t('pickle_tagline')}
+      </p>
+
+      <Button className="mt-6">{t('get_started')}</Button>
+    </>
+  )
+}
 
 Home.getLayout = (page) => (
   <PageLayout

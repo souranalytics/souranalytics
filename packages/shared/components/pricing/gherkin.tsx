@@ -1,63 +1,72 @@
 import { Pricing } from '@prisma/gherkin'
 import millify from 'millify'
+import { useIntl, useTranslations } from 'next-intl'
 import { FunctionComponent } from 'react'
 import { twMerge } from 'tailwind-merge'
-
-import { formatCurrency } from '../../lib/formatters'
 
 type Props = {
   className?: string
   item: Pricing
 }
 
-export const PricingCard: FunctionComponent<Props> = ({ className, item }) => (
-  <div
-    className={twMerge(
-      'ring-2 ring-neutral-400 transition-shadow hover:ring-primary-600 w-full lg:w-60 p-4 rounded-md',
-      className
-    )}>
-    <div className="text-2xl font-semibold">{item.name}</div>
+export const PricingCard: FunctionComponent<Props> = ({ className, item }) => {
+  const intl = useIntl()
+  const t = useTranslations()
 
-    <div className="flex items-center my-4">
-      <div className="font-mono text-4xl font-bold">
-        {formatCurrency(item.price)}
-      </div>
-      <div className="ml-2 text-base">/ month</div>
-    </div>
+  return (
+    <div
+      className={twMerge(
+        'ring-2 ring-neutral-400 transition-shadow hover:ring-primary-600 w-full lg:w-60 p-4 rounded-md',
+        className
+      )}>
+      <div className="text-2xl font-semibold">{item.name}</div>
 
-    <div className="flex items-center justify-between">
-      <div className="font-medium">Collaborators</div>
-      <div className="font-mono font-semibold lowercase">
-        {millify(item.collaborators)}
+      <div className="flex items-center my-4">
+        <div className="font-mono text-4xl font-bold">
+          {intl.formatNumber(item.price, {
+            currency: 'USD',
+            maximumFractionDigits: 0,
+            minimumFractionDigits: 0,
+            style: 'currency'
+          })}
+        </div>
+        <div className="ml-2 text-base">{t('per_month')}</div>
       </div>
-    </div>
 
-    <div className="flex items-center justify-between">
-      <div className="font-medium">Plans</div>
-      <div className="font-mono font-semibold lowercase">
-        {millify(item.plans)}
+      <div className="flex items-center justify-between">
+        <div className="font-medium">{t('collaborators')}</div>
+        <div className="font-mono font-semibold lowercase">
+          {millify(item.collaborators)}
+        </div>
       </div>
-    </div>
 
-    <div className="flex items-center justify-between">
-      <div className="font-medium">Views</div>
-      <div className="font-mono font-semibold lowercase">
-        {millify(item.views)}
+      <div className="flex items-center justify-between">
+        <div className="font-medium">{t('plans')}</div>
+        <div className="font-mono font-semibold lowercase">
+          {millify(item.plans)}
+        </div>
       </div>
-    </div>
 
-    <div className="flex items-center justify-between">
-      <div className="font-medium">Events</div>
-      <div className="font-mono font-semibold lowercase">
-        {millify(item.events)}
+      <div className="flex items-center justify-between">
+        <div className="font-medium">{t('views')}</div>
+        <div className="font-mono font-semibold lowercase">
+          {millify(item.views)}
+        </div>
       </div>
-    </div>
 
-    <div className="flex items-center justify-between">
-      <div className="font-medium">Properties</div>
-      <div className="font-mono font-semibold lowercase">
-        {millify(item.properties)}
+      <div className="flex items-center justify-between">
+        <div className="font-medium">{t('events')}</div>
+        <div className="font-mono font-semibold lowercase">
+          {millify(item.events)}
+        </div>
+      </div>
+
+      <div className="flex items-center justify-between">
+        <div className="font-medium">{t('properties')}</div>
+        <div className="font-mono font-semibold lowercase">
+          {millify(item.properties)}
+        </div>
       </div>
     </div>
-  </div>
-)
+  )
+}

@@ -15,7 +15,7 @@ const Pickle: FunctionComponent<AppPropsWithLayout> = ({
   const locale = router.locale ?? 'en'
 
   return (
-    <IntlProvider locale={locale}>
+    <IntlProvider locale={locale} now={new Date()}>
       {getLayout(<Component {...pageProps} />)}
     </IntlProvider>
   )

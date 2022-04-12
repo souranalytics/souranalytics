@@ -22,8 +22,6 @@ const SignIn: NextPageWithLayout = () => {
   )
 }
 
-SignIn.getLayout = (page) => (
-  <AuthLayout title="Sign in: Sour Analytics">{page}</AuthLayout>
-)
+SignIn.getLayout = (page) => <AuthLayout title="sign_in">{page}</AuthLayout>
 
 export default SignIn
