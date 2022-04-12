@@ -1,11 +1,13 @@
 import axios, { AxiosRequestHeaders } from 'axios'
 
+import { Nullable } from 'shared/types'
+
 import { NextPageRequest } from '../types/next'
 import { Profile } from '../types/profile'
 
 export const fetchProfile = async (
   req?: NextPageRequest
-): Promise<Profile | null> => {
+): Promise<Nullable<Profile>> => {
   const headers: AxiosRequestHeaders = {}
 
   if (req?.cookies.token) {

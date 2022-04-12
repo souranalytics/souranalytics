@@ -51,28 +51,26 @@ export const Footer: FunctionComponent<Props> = ({ site }) => {
   ])
 
   return (
-    <div className="bg-neutral-50">
-      <footer className="flex flex-col p-6 text-sm text-neutral-500 lg:flex-row lg:justify-between">
-        <p>
-          {t('copyright', {
-            year: getYear(new Date())
-          })}
-        </p>
+    <footer className="container flex flex-col justify-between p-6 mx-auto text-sm text-neutral-500 lg:flex-row lg:justify-between">
+      <p>
+        {t('copyright', {
+          year: getYear(new Date())
+        })}
+      </p>
 
-        <aside className="flex mt-4 lg:mt-0">
-          {links.map((links, index) => (
-            <nav className="flex flex-col ml-6 first:ml-0" key={index}>
-              {links.map((link, index) => (
-                <Link href={link.href} key={index}>
-                  <a className="mt-1 text-neutral-600 hover:text-black first:mt-0">
-                    {link.label}
-                  </a>
-                </Link>
-              ))}
-            </nav>
-          ))}
-        </aside>
-      </footer>
-    </div>
+      <aside className="flex mt-4 lg:mt-0">
+        {links.map((links, index) => (
+          <nav className="flex flex-col ml-6 first:ml-0" key={index}>
+            {links.map((link, index) => (
+              <Link href={link.href} key={index}>
+                <a className="mt-1 text-neutral-600 hover:text-black first:mt-0">
+                  {link.label}
+                </a>
+              </Link>
+            ))}
+          </nav>
+        ))}
+      </aside>
+    </footer>
   )
 }

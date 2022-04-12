@@ -10,7 +10,7 @@ type Props = PropsWithChildren<{
 }>
 
 export const AuthLayout: FunctionComponent<Props> = ({ children, title }) => (
-  <div className="flex flex-col items-center justify-center min-h-screen p-6 mx-auto">
+  <div className="flex flex-col items-center justify-center min-h-screen p-6 mx-auto bg-neutral-100">
     <Head>
       <title>{title}</title>
     </Head>

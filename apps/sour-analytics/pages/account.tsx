@@ -41,6 +41,15 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
 }) => {
   const user = await getUser(req)
 
+  if (!user) {
+    return {
+      redirect: {
+        destination: '/auth/sign-in',
+        permanent: false
+      }
+    }
+  }
+
   return {
     props: {
       user

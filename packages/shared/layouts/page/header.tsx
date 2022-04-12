@@ -5,6 +5,8 @@ import { useTranslations } from 'next-intl'
 import { FunctionComponent, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { Nullable } from 'shared/types'
+
 import { Logo } from '../../components/common/logo'
 import { Profile } from '../../types/profile'
 import { Links, Site } from './index'
@@ -12,7 +14,7 @@ import { NavLink } from './link'
 
 type Props = {
   site: Site
-  user?: Profile
+  user?: Nullable<Profile>
 }
 
 export const Header: FunctionComponent<Props> = ({ site, user }) => {
@@ -67,41 +69,39 @@ export const Header: FunctionComponent<Props> = ({ site, user }) => {
   ]
 
   return (
-    <div className="bg-white shadow-sm">
-      <header className="container flex justify-between mx-auto">
-        <Link href="/">
-          <a className="flex items-center p-3">
-            <Logo size={16} />
+    <header className="container flex justify-between mx-auto">
+      <Link href="/">
+        <a className="flex items-center p-3">
+          <Logo size={16} />
 
-            <span className="ml-3 font-medium text-black">{t(site)}</span>
-          </a>
-        </Link>
+          <span className="ml-3 font-medium text-black">{t(site)}</span>
+        </a>
+      </Link>
 
-        <button
-          className={twMerge(
-            'p-3 lg:hidden',
-            visible && 'fixed top-0 right-0 z-10'
-          )}
-          onClick={() => setVisible(!visible)}>
-          {visible ? <CloseIcon /> : <MenuIcon />}
-        </button>
+      <button
+        className={twMerge(
+          'p-3 lg:hidden',
+          visible && 'fixed top-0 right-0 z-10'
+        )}
+        onClick={() => setVisible(!visible)}>
+        {visible ? <CloseIcon /> : <MenuIcon />}
+      </button>
 
-        <nav
-          className={twMerge(
-            'fixed top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center text-2xl lg:text-base bg-white bg-opacity-95 transition-opacity lg:static lg:flex-row lg:opacity-100 lg:pointer-events-auto',
-            !visible && 'opacity-0 pointer-events-none'
-          )}>
-          <a className="p-3 lg:hidden">
-            <Logo size={32} />
-          </a>
+      <nav
+        className={twMerge(
+          'fixed top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center text-2xl lg:text-base bg-white bg-opacity-95 transition-opacity lg:static lg:flex-row lg:opacity-100 lg:pointer-events-auto',
+          !visible && 'opacity-0 pointer-events-none'
+        )}>
+        <a className="p-3 lg:hidden">
+          <Logo size={32} />
+        </a>
 
-          {links.map((link, index) => (
-            <NavLink href={link.href} key={index}>
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
-      </header>
-    </div>
+        {links.map((link, index) => (
+          <NavLink href={link.href} key={index}>
+            {link.label}
+          </NavLink>
+        ))}
+      </nav>
+    </header>
   )
 }

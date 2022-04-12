@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl'
 import { FunctionComponent, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { Nullable } from 'shared/types'
+
 import { Profile } from '../../types/profile'
 import { Footer } from './footer'
 import { Header } from './header'
@@ -19,7 +21,7 @@ type Props = PropsWithChildren<{
   className?: string
   site?: Site
   title?: string
-  user?: Profile
+  user?: Nullable<Profile>
 }>
 
 export const PageLayout: FunctionComponent<Props> = ({
@@ -43,7 +45,9 @@ export const PageLayout: FunctionComponent<Props> = ({
 
       <Header site={site} user={user} />
 
-      <div className={twMerge('flex-1', className)}>{children}</div>
+      <div className={twMerge('flex-1 container mx-auto p-6', className)}>
+        {children}
+      </div>
 
       <Footer site={site} />
     </div>

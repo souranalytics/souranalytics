@@ -12,7 +12,7 @@ const SignIn: NextPageWithLayout = () => {
       <h1 className="text-2xl font-bold">{t('sign_in')}</h1>
 
       <Button
-        className="w-full mt-6 bg-black"
+        className="w-full mt-6 bg-black hover:bg-black hover:bg-opacity-80"
         onClick={() => {
           window.location.href = '/api/auth/github'
         }}>

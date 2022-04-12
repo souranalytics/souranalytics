@@ -12,8 +12,10 @@ const Gherkin: FunctionComponent<AppPropsWithLayout> = ({
 }) => {
   const getLayout = Component.getLayout ?? ((page) => page)
 
+  const locale = router.locale ?? 'en'
+
   return (
-    <IntlProvider locale={router.locale}>
+    <IntlProvider locale={locale}>
       {getLayout(<Component {...pageProps} />)}
     </IntlProvider>
   )

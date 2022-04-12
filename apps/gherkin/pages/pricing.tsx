@@ -4,6 +4,7 @@ import { GetServerSideProps } from 'next'
 import { fetchProfile } from 'shared/auth/auth'
 import { PricingCard } from 'shared/components/pricing/gherkin'
 import { PageLayout } from 'shared/layouts/page'
+import { Nullable } from 'shared/types'
 import { NextPageWithLayout } from 'shared/types/next'
 import { Profile } from 'shared/types/profile'
 
@@ -11,7 +12,7 @@ import { prisma } from '../lib/prisma'
 
 type Props = {
   plans: Array<Pricing>
-  user: Profile
+  user: Nullable<Profile>
 }
 
 const Home: NextPageWithLayout<Props> = ({ plans }) => (

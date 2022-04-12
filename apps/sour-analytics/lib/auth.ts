@@ -1,5 +1,6 @@
 import { NextApiRequest } from 'next'
 
+import { Nullable } from 'shared/types'
 import { NextPageRequest } from 'shared/types/next'
 import { Profile } from 'shared/types/profile'
 
@@ -9,7 +10,7 @@ import { prisma } from './prisma'
 
 export const getUser = async (
   req: NextApiRequest | NextPageRequest
-): Promise<Profile | null> => {
+): Promise<Nullable<Profile>> => {
   const token = getToken(req)
 
   if (!token) {

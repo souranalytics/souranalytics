@@ -3,11 +3,12 @@ import { GetServerSideProps } from 'next'
 import { fetchProfile } from 'shared/auth/auth'
 import { Button } from 'shared/components/common/button'
 import { PageLayout } from 'shared/layouts/page'
+import { Nullable } from 'shared/types'
 import { NextPageWithLayout } from 'shared/types/next'
 import { Profile } from 'shared/types/profile'
 
 type Props = {
-  user: Profile
+  user: Nullable<Profile>
 }
 
 const Home: NextPageWithLayout<Props> = () => (

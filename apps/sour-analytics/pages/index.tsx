@@ -3,13 +3,14 @@ import { useTranslations } from 'next-intl'
 
 import { Button } from 'shared/components/common/button'
 import { PageLayout } from 'shared/layouts/page'
+import { Nullable } from 'shared/types'
 import { NextPageWithLayout } from 'shared/types/next'
 import { Profile } from 'shared/types/profile'
 
 import { getUser } from '../lib/auth'
 
 type Props = {
-  user: Profile
+  user: Nullable<Profile>
 }
 
 const Home: NextPageWithLayout<Props> = () => {
@@ -19,7 +20,7 @@ const Home: NextPageWithLayout<Props> = () => {
     <>
       <h1 className="text-4xl font-bold">{t('sour_analytics')}</h1>
 
-      <Button className="mt-6"> {t('get_started')}</Button>
+      <Button className="mt-6">{t('get_started')}</Button>
     </>
   )
 }
