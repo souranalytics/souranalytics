@@ -17,10 +17,10 @@
     "tailwind-merge": "^1.2.1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.181",
+    "@types/lodash": "^4.14.182",
     "@types/pluralize": "^0.0.29",
-    "@types/react": "^18.0.3",
-    "@types/react-dom": "^18.0.0",
+    "@types/react": "^18.0.5",
+    "@types/react-dom": "^18.0.1",
     "config": "*",
     "tsconfig": "*",
     "typescript": "^4.6.3"
