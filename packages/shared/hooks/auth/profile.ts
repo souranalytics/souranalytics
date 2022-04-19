@@ -22,7 +22,9 @@ export const useProfile = (): Returns => {
 
       const user = await fetchProfile()
 
-      setUser(user)
+      if (user) {
+        setUser(user)
+      }
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message)

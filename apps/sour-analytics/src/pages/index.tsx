@@ -2,6 +2,7 @@ import { GetServerSideProps } from 'next'
 import { useTranslations } from 'next-intl'
 
 import { Button } from 'shared/components/common/button'
+import { SourAnalyticsLogo } from 'shared/components/logo/sour-analytics'
 import { PageLayout } from 'shared/layouts/page'
 import { Nullable } from 'shared/types'
 import { NextPageWithLayout } from 'shared/types/next'
@@ -18,7 +19,9 @@ const Home: NextPageWithLayout<Props> = () => {
 
   return (
     <>
-      <h1 className="text-4xl font-bold">{t('sour_analytics')}</h1>
+      <SourAnalyticsLogo className="w-24 h-24" />
+
+      <h1 className="mt-6 text-4xl font-bold">{t('sour_analytics')}</h1>
 
       <Button className="mt-6">{t('get_started')}</Button>
     </>
@@ -27,7 +30,7 @@ const Home: NextPageWithLayout<Props> = () => {
 
 Home.getLayout = (page) => (
   <PageLayout
-    className="flex flex-col items-start justify-center"
+    className="flex flex-col items-center justify-center"
     user={page.props.user}>
     {page}
   </PageLayout>

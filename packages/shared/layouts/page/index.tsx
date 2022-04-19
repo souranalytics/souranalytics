@@ -4,13 +4,13 @@ import { useTranslations } from 'next-intl'
 import { FunctionComponent, PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { Nullable } from 'shared/types'
-
+import { Nullable } from '../../types'
 import { Profile } from '../../types/profile'
 import { Footer } from './footer'
 import { Header } from './header'
 
 export type Links = Array<{
+  base?: string
   href: string
   label: string
 }>
@@ -38,6 +38,8 @@ export const PageLayout: FunctionComponent<Props> = ({
       <Head>
         <title>
           {compact([title, site])
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             .map((key) => t(key))
             .join(' × ')}
         </title>

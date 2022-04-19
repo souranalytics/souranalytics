@@ -1,13 +1,14 @@
 import { CloseIcon, MenuIcon } from '@iconicicons/react'
-import compact from 'lodash/compact'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { FunctionComponent, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { Nullable } from 'shared/types'
-
-import { Logo } from '../../components/common/logo'
+import { GherkinLogo } from '../../components/logo/gherkin'
+import { PickleLogo } from '../../components/logo/pickle'
+import { SourAnalyticsLogo } from '../../components/logo/sour-analytics'
+import { useUrlChange } from '../../hooks/utils/url-change'
+import { Nullable } from '../../types'
 import { Profile } from '../../types/profile'
 import { Links, Site } from './index'
 import { NavLink } from './link'
@@ -21,6 +22,8 @@ export const Header: FunctionComponent<Props> = ({ site, user }) => {
   const t = useTranslations()
 
   const [visible, setVisible] = useState(false)
+
+  useUrlChange(() => setVisible(false))
 
   const links: Links = [
     ...(site !== 'sour_analytics'
@@ -38,70 +41,82 @@ export const Header: FunctionComponent<Props> = ({ site, user }) => {
     ...(user
       ? [
           {
-            href: `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/workspaces`,
+            base: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
+            href: '/workspaces',
             label: t('workspaces')
           },
           {
-            href: `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/account`,
+            base: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
+            href: '/account',
             label: t('account')
           },
           {
-            href: `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/api/auth/sign-out`,
+            base: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
+            href: '/api/auth/sign-out',
             label: t('sign_out')
           }
         ]
       : [
           {
-            href: compact([
-              `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/sign-in`,
-              site !== 'sour_analytics' &&
-                `redirect=${encodeURI(
-                  `${
-                    site === 'pickle'
-                      ? process.env.NEXT_PUBLIC_URL_PICKLE
-                      : process.env.NEXT_PUBLIC_URL_GHERKIN
-                  }/app`
-                )}`
-            ]).join('?'),
+            base: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
+            href: '/sign-in',
             label: t('sign_in')
           }
         ])
   ]
 
+  const Logo =
+    site === 'pickle'
+      ? PickleLogo
+      : site === 'gherkin'
+      ? GherkinLogo
+      : SourAnalyticsLogo
+
   return (
-    <header className="container flex justify-between mx-auto">
-      <Link href="/">
-        <a className="flex items-center p-3">
-          <Logo size={16} />
+    <div className="border-b border-neutral-100">
+      <header className="container flex justify-between mx-auto">
+        <Link href="/">
+          <a className="flex items-center p-3">
+            <Logo className="w-6 h-6" />
 
-          <span className="ml-3 font-medium text-black">{t(site)}</span>
-        </a>
-      </Link>
+            <span className="ml-3 text-lg font-semibold text-black">
+              {t(site)}
+            </span>
+          </a>
+        </Link>
 
-      <button
-        className={twMerge(
-          'p-3 lg:hidden',
-          visible && 'fixed top-0 right-0 z-10'
-        )}
-        onClick={() => setVisible(!visible)}>
-        {visible ? <CloseIcon /> : <MenuIcon />}
-      </button>
+        <button
+          className={twMerge(
+            'p-4 lg:hidden',
+            visible && 'fixed top-0 right-0 z-20'
+          )}
+          onClick={() => setVisible(!visible)}>
+          {visible ? <CloseIcon /> : <MenuIcon />}
+        </button>
 
-      <nav
-        className={twMerge(
-          'fixed top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center text-2xl lg:text-base bg-white bg-opacity-95 transition-opacity lg:static lg:flex-row lg:opacity-100 lg:pointer-events-auto',
-          !visible && 'opacity-0 pointer-events-none'
-        )}>
-        <a className="p-3 lg:hidden">
-          <Logo size={32} />
-        </a>
+        <nav
+          className={twMerge(
+            'fixed top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center text-2xl lg:text-base bg-white bg-opacity-95 transition-opacity z-10 lg:static lg:flex-row lg:opacity-100 lg:pointer-events-auto',
+            !visible && 'opacity-0 pointer-events-none'
+          )}>
+          <Link href="/">
+            <a className="p-3 lg:hidden">
+              <Logo className="w-16 h-16" />
+            </a>
+          </Link>
 
-        {links.map((link, index) => (
-          <NavLink href={link.href} key={index}>
-            {link.label}
-          </NavLink>
-        ))}
-      </nav>
-    </header>
+          {links.map(({ base, href, label }, index) => (
+            <NavLink
+              base={base}
+              className="flex items-center p-4 font-medium leading-none hover:text-primary-600 text-neutral-600"
+              classNameActive="bg-primary-600 lg:p-2 m-2 rounded-lg lg:rounded-md text-white hover:text-white hover:bg-primary-800"
+              href={href}
+              key={index}>
+              {label}
+            </NavLink>
+          ))}
+        </nav>
+      </header>
+    </div>
   )
 }

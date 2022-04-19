@@ -1,7 +1,6 @@
 import axios, { AxiosRequestHeaders } from 'axios'
 
-import { Nullable } from 'shared/types'
-
+import { Nullable } from '../types/index'
 import { NextPageRequest } from '../types/next'
 import { Profile } from '../types/profile'
 

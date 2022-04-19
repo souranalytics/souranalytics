@@ -4,7 +4,7 @@ module.exports = {
   content: [
     '../../packages/shared/components/**/*.tsx',
     '../../packages/shared/layouts/**/*.tsx',
-    'pages/**/*.tsx'
+    'src/**/*.tsx'
   ],
   plugins: [],
   theme: {

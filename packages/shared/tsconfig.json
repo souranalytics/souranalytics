@@ -1,5 +1,15 @@
 {
-  "extends": "tsconfig/react-library.json",
-  "include": ["components"],
+  "extends": "tsconfig/library.json",
+  "include": [
+    "auth",
+    "components",
+    "hooks",
+    "layouts",
+    "lib",
+    "locales",
+    "providers",
+    "types",
+    "typings/*.d.ts"
+  ],
   "exclude": ["dist", "build", "node_modules"]
 }

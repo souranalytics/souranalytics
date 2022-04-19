@@ -1,10 +1,10 @@
 import { getYear } from 'date-fns'
 import compact from 'lodash/compact'
-import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { FunctionComponent } from 'react'
 
 import { Links, Site } from './index'
+import { NavLink } from './link'
 
 type Props = {
   site: Site
@@ -16,15 +16,18 @@ export const Footer: FunctionComponent<Props> = ({ site }) => {
   const links: Array<Links> = compact([
     [
       {
-        href: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
+        base: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
+        href: '/',
         label: t('sour_analytics')
       },
       {
-        href: process.env.NEXT_PUBLIC_URL_PICKLE,
+        base: process.env.NEXT_PUBLIC_URL_PICKLE,
+        href: '/',
         label: t('pickle')
       },
       {
-        href: process.env.NEXT_PUBLIC_URL_GHERKIN,
+        base: process.env.NEXT_PUBLIC_URL_GHERKIN,
+        href: '/',
         label: t('gherkin')
       }
     ],
@@ -40,37 +43,43 @@ export const Footer: FunctionComponent<Props> = ({ site }) => {
     ],
     [
       {
-        href: `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/account`,
+        base: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
+        href: '/account',
         label: t('account')
       },
       {
-        href: `${process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS}/help`,
+        base: process.env.NEXT_PUBLIC_URL_SOUR_ANALYTICS,
+        href: '/help',
         label: t('help')
       }
     ]
   ])
 
   return (
-    <footer className="container flex flex-col justify-between p-6 mx-auto text-sm text-neutral-500 lg:flex-row lg:justify-between">
-      <p>
-        {t('copyright', {
-          year: getYear(new Date())
-        })}
-      </p>
+    <div className="border-t border-neutral-100 bg-neutral-50">
+      <footer className="container flex flex-col justify-between p-6 mx-auto text-sm text-neutral-500 lg:flex-row lg:justify-between">
+        <p>
+          {t('copyright', {
+            year: getYear(new Date())
+          })}
+        </p>
 
-      <aside className="flex mt-4 lg:mt-0">
-        {links.map((links, index) => (
-          <nav className="flex flex-col ml-6 first:ml-0" key={index}>
-            {links.map((link, index) => (
-              <Link href={link.href} key={index}>
-                <a className="mt-1 text-neutral-600 hover:text-black first:mt-0">
-                  {link.label}
-                </a>
-              </Link>
-            ))}
-          </nav>
-        ))}
-      </aside>
-    </footer>
+        <aside className="flex mt-4 lg:mt-0">
+          {links.map((links, index) => (
+            <nav className="flex flex-col ml-6 first:ml-0" key={index}>
+              {links.map(({ base, href, label }, index) => (
+                <NavLink
+                  base={base}
+                  className="mt-1 text-neutral-600 hover:text-black first:mt-0"
+                  href={href}
+                  key={index}>
+                  {label}
+                </NavLink>
+              ))}
+            </nav>
+          ))}
+        </aside>
+      </footer>
+    </div>
   )
 }

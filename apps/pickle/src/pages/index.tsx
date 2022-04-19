@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl'
 
 import { fetchProfile } from 'shared/auth/auth'
 import { Button } from 'shared/components/common/button'
+import { PickleLogo } from 'shared/components/logo/pickle'
 import { PageLayout } from 'shared/layouts/page'
 import { Nullable } from 'shared/types'
 import { NextPageWithLayout } from 'shared/types/next'
@@ -17,7 +18,9 @@ const Home: NextPageWithLayout<Props> = () => {
 
   return (
     <>
-      <h1 className="text-4xl font-bold">{t('pickle')}</h1>
+      <PickleLogo className="w-24 h-24" />
+
+      <h1 className="mt-6 text-4xl font-bold">{t('pickle')}</h1>
       <p className="mt-2 text-2xl font-medium text-neutral-800">
         {t('pickle_tagline')}
       </p>
@@ -29,7 +32,7 @@ const Home: NextPageWithLayout<Props> = () => {
 
 Home.getLayout = (page) => (
   <PageLayout
-    className="flex flex-col items-start justify-center"
+    className="flex flex-col items-center justify-center"
     site="pickle"
     user={page.props.user}>
     {page}
