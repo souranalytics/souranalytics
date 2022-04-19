@@ -1,7 +1,7 @@
 {
   "account": "Account",
   "collaborators": "Collaborators",
-  "copyright": "Copyright © {year} Sour Analytics. All rights reserved.",
+  "copyright": "© {year} Sour Analytics. All rights reserved.",
   "docs": "Docs",
   "events": "Events",
   "get_started": "Get started",
