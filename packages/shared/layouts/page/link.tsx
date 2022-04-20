@@ -24,7 +24,7 @@ export const NavLink: FunctionComponent<Props> = ({
 
   const url = base ? new URL(link).pathname : link
 
-  const active = router.asPath.includes(url)
+  const active = router.asPath.endsWith(url)
 
   return (
     <Link href={link}>

@@ -1,4 +1,4 @@
-import 'config/tailwind.css'
+import 'shared/styles/global.css'
 
 import { FunctionComponent } from 'react'
 import { SWRConfig } from 'swr'

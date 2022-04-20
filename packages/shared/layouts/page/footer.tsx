@@ -71,6 +71,7 @@ export const Footer: FunctionComponent<Props> = ({ site }) => {
                 <NavLink
                   base={base}
                   className="mt-1 text-neutral-600 hover:text-black first:mt-0"
+                  classNameActive="font-medium"
                   href={href}
                   key={index}>
                   {label}

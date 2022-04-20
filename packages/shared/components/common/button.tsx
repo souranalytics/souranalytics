@@ -16,7 +16,7 @@ export const Button: FunctionComponent<Props> = ({
 }) => (
   <button
     className={twMerge(
-      'bg-primary-600 text-white font-semibold px-5 py-3 rounded-lg transition-colors hover:bg-primary-500 active:bg-primary-700 flex items-center justify-center',
+      'bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors hover:bg-primary-500 active:bg-primary-700 flex items-center justify-center',
       className
     )}
     onClick={onClick}>

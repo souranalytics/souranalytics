@@ -22,7 +22,7 @@ export const PricingCard: FunctionComponent<Props> = ({ className, item }) => {
       <div className="text-2xl font-semibold">{item.name}</div>
 
       <div className="flex items-center my-4">
-        <div className="font-mono text-4xl font-bold">
+        <div className="text-4xl font-bold tabular-nums">
           {intl.formatNumber(item.price, {
             currency: 'USD',
             maximumFractionDigits: 0,
@@ -35,28 +35,28 @@ export const PricingCard: FunctionComponent<Props> = ({ className, item }) => {
 
       <div className="flex items-center justify-between">
         <div className="font-medium">{t('collaborators')}</div>
-        <div className="font-mono font-semibold lowercase">
+        <div className="font-semibold lowercase tabular-nums">
           {millify(item.collaborators)}
         </div>
       </div>
 
       <div className="flex items-center justify-between">
         <div className="font-medium">{t('events')}</div>
-        <div className="font-mono font-semibold lowercase">
+        <div className="font-semibold lowercase tabular-nums">
           {millify(item.events)}
         </div>
       </div>
 
       <div className="flex items-center justify-between">
         <div className="font-medium">{t('users')}</div>
-        <div className="font-mono font-semibold lowercase">
+        <div className="font-semibold lowercase tabular-nums">
           {millify(item.users)}
         </div>
       </div>
 
       <div className="flex items-center justify-between">
         <div className="font-medium">{t('views')}</div>
-        <div className="font-mono font-semibold lowercase">
+        <div className="font-semibold lowercase tabular-nums">
           {millify(item.views)}
         </div>
       </div>

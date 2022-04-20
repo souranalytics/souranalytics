@@ -29,7 +29,7 @@ export const Input: FunctionComponent<Props> = ({
 
     <input
       {...props}
-      className="w-full p-3 rounded-lg bg-neutral-100 outline-primary-600"
+      className="w-full p-3 rounded-lg bg-neutral-200 focus:bg-white"
     />
 
     {hint && <div className="mt-2 text-xs text-neutral-600">{hint}</div>}

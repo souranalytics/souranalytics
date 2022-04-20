@@ -15,6 +15,10 @@
   @apply bg-opacity-50 bg-primary-200;
 }
 
+* {
+  @apply outline-primary-800;
+}
+
 body {
   @apply text-black bg-white cursor-default font-body;
 }
@@ -24,6 +28,7 @@ a {
 }
 
 /* spinner */
+
 .spinner:not(:required) {
   @apply relative block overflow-hidden rounded-full transform-gpu bg-[#f5bc00] bg-opacity-50;
 }
