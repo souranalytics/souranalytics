@@ -20,7 +20,7 @@ export type Site = 'sour_analytics' | 'pickle' | 'gherkin'
 type Props = PropsWithChildren<{
   className?: string
   site?: Site
-  title?: string
+  title?: keyof IntlMessages
   user?: Nullable<Profile>
 }>
 
@@ -38,8 +38,6 @@ export const PageLayout: FunctionComponent<Props> = ({
       <Head>
         <title>
           {compact([title, site])
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             .map((key) => t(key))
             .join(' × ')}
         </title>
@@ -47,7 +45,11 @@ export const PageLayout: FunctionComponent<Props> = ({
 
       <Header site={site} user={user} />
 
-      <div className={twMerge('flex-1 container mx-auto p-6', className)}>
+      <div
+        className={twMerge(
+          'flex-1 container mx-auto p-6 lg:border-x lg:border-neutral-200',
+          className
+        )}>
         {children}
       </div>
 

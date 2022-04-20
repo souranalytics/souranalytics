@@ -8,7 +8,7 @@ import { FunctionComponent, PropsWithChildren } from 'react'
 import { SourAnalyticsLogo } from '../components/logo/sour-analytics'
 
 type Props = PropsWithChildren<{
-  title: string
+  title: keyof IntlMessages
 }>
 
 export const AuthLayout: FunctionComponent<Props> = ({ children, title }) => {
@@ -19,8 +19,6 @@ export const AuthLayout: FunctionComponent<Props> = ({ children, title }) => {
       <Head>
         <title>
           {compact([title, 'sour_analytics'])
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             .map((key) => t(key))
             .join(' × ')}
         </title>{' '}

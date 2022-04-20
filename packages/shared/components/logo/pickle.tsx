@@ -1,11 +1,12 @@
 import { FunctionComponent } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   className?: string
 }
 
 export const PickleLogo: FunctionComponent<Props> = ({ className }) => (
-  <svg className={className} viewBox="0 0 48 48">
+  <svg className={twMerge('w-12 h-12', className)} viewBox="0 0 48 48">
     <path
       d="m42.4 14.1h-4.7l3.3-7.1-7.1 3.3v-4.7l-3.7 5.2-1.3-4.5-4.2 11.3 5.7 5.7 11.3-4.2-4.5-1.3z"
       fill="#3ddab4"

@@ -32,7 +32,7 @@ const Home: NextPageWithLayout<Props> = () => {
 
 Home.getLayout = (page) => (
   <PageLayout
-    className="flex flex-col items-center justify-center"
+    className="flex flex-col items-center justify-center text-center"
     site="gherkin"
     user={page.props.user}>
     {page}

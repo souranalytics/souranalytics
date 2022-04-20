@@ -1,11 +1,10 @@
-import { GetServerSideProps } from 'next'
 import Image from 'next/image'
 
 import { PageLayout } from 'shared/layouts/page'
 import { NextPageWithLayout } from 'shared/types/next'
 import { Profile } from 'shared/types/profile'
 
-import { getUser } from '../lib/auth'
+import { authPage } from '../lib/auth'
 
 type Props = {
   user: Profile
@@ -36,25 +35,6 @@ Account.getLayout = (page) => (
   </PageLayout>
 )
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({
-  req
-}) => {
-  const user = await getUser(req)
-
-  if (!user) {
-    return {
-      redirect: {
-        destination: '/sign-in',
-        permanent: false
-      }
-    }
-  }
-
-  return {
-    props: {
-      user
-    }
-  }
-}
+export const getServerSideProps = authPage()
 
 export default Account

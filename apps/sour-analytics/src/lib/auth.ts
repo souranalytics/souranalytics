@@ -1,4 +1,4 @@
-import { NextApiRequest } from 'next'
+import { GetServerSideProps, NextApiRequest } from 'next'
 
 import { Nullable } from 'shared/types'
 import { NextPageRequest } from 'shared/types/next'
@@ -7,6 +7,31 @@ import { Profile } from 'shared/types/profile'
 import { cookie } from './cookie'
 import { jwt } from './jwt'
 import { prisma } from './prisma'
+
+export type AuthPageProps = {
+  user: Profile
+}
+
+export const authPage =
+  (): GetServerSideProps<AuthPageProps> =>
+  async ({ req }) => {
+    const user = await getUser(req)
+
+    if (!user) {
+      return {
+        redirect: {
+          destination: '/sign-in',
+          permanent: false
+        }
+      }
+    }
+
+    return {
+      props: {
+        user
+      }
+    }
+  }
 
 export const getUser = async (
   req: NextApiRequest | NextPageRequest

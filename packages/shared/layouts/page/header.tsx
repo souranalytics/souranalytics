@@ -1,9 +1,10 @@
-import { CloseIcon, MenuIcon } from '@iconicicons/react'
+import compact from 'lodash/compact'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { FunctionComponent, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { Icon } from '../../components/common/icon'
 import { GherkinLogo } from '../../components/logo/gherkin'
 import { PickleLogo } from '../../components/logo/pickle'
 import { SourAnalyticsLogo } from '../../components/logo/sour-analytics'
@@ -25,7 +26,7 @@ export const Header: FunctionComponent<Props> = ({ site, user }) => {
 
   useUrlChange(() => setVisible(false))
 
-  const links: Links = [
+  const links: Links = compact([
     ...(site !== 'sour_analytics'
       ? [
           {
@@ -35,6 +36,10 @@ export const Header: FunctionComponent<Props> = ({ site, user }) => {
           {
             href: '/docs',
             label: t('docs')
+          },
+          user && {
+            href: '/dashboard',
+            label: t('dashboard')
           }
         ]
       : []),
@@ -63,7 +68,7 @@ export const Header: FunctionComponent<Props> = ({ site, user }) => {
             label: t('sign_in')
           }
         ])
-  ]
+  ])
 
   const Logo =
     site === 'pickle'
@@ -73,13 +78,13 @@ export const Header: FunctionComponent<Props> = ({ site, user }) => {
       : SourAnalyticsLogo
 
   return (
-    <div className="border-b border-neutral-100">
-      <header className="container flex justify-between mx-auto">
+    <div className="border-b border-neutral-200">
+      <header className="container flex items-center justify-between mx-auto lg:border-x lg:border-neutral-200">
         <Link href="/">
-          <a className="flex items-center p-3">
-            <Logo className="w-6 h-6" />
+          <a className="flex items-center p-4">
+            <Logo className="w-12 h-12" />
 
-            <span className="ml-3 text-lg font-semibold text-black">
+            <span className="ml-3 text-xl font-semibold text-black">
               {t(site)}
             </span>
           </a>
@@ -87,11 +92,11 @@ export const Header: FunctionComponent<Props> = ({ site, user }) => {
 
         <button
           className={twMerge(
-            'p-4 lg:hidden',
+            'p-7 lg:hidden',
             visible && 'fixed top-0 right-0 z-20'
           )}
           onClick={() => setVisible(!visible)}>
-          {visible ? <CloseIcon /> : <MenuIcon />}
+          <Icon name={visible ? 'close' : 'menu'} />
         </button>
 
         <nav
@@ -108,8 +113,8 @@ export const Header: FunctionComponent<Props> = ({ site, user }) => {
           {links.map(({ base, href, label }, index) => (
             <NavLink
               base={base}
-              className="flex items-center p-4 font-medium leading-none hover:text-primary-600 text-neutral-600"
-              classNameActive="bg-primary-600 lg:p-2 m-2 rounded-lg lg:rounded-md text-white hover:text-white hover:bg-primary-800"
+              className="flex items-center p-4 mt-4 font-medium leading-none rounded-full lg:p-3 lg:mt-0 lg:mr-3 hover:text-primary-600 text-neutral-600"
+              classNameActive="bg-primary-600 text-white hover:text-white hover:bg-primary-500"
               href={href}
               key={index}>
               {label}

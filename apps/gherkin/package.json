@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "clean": "rm -rf .next",
     "build": "next build",
+    "clean": "rm -rf .next",
     "db:dev": "env-cmd -f .env.local prisma migrate dev",
     "db:generate": "env-cmd -f .env.local prisma generate",
     "db:migrate": "env-cmd -f .env.production prisma migrate deploy",

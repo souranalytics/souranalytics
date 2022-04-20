@@ -6,7 +6,7 @@ const Error: NextPageWithLayout = () => <NotFound />
 
 Error.getLayout = (page) => (
   <PageLayout
-    className="flex flex-col items-start justify-center"
+    className="flex flex-col items-center justify-center text-center"
     site="pickle"
     title="not_found">
     {page}

@@ -16,7 +16,7 @@ export const PricingCard: FunctionComponent<Props> = ({ className, item }) => {
   return (
     <div
       className={twMerge(
-        'ring-2 ring-neutral-400 transition-shadow hover:ring-primary-600 w-full lg:w-60 p-4 rounded-md',
+        'ring-2 ring-neutral-400 transition-shadow hover:ring-primary-600 w-full lg:w-60 p-4 rounded-lg',
         className
       )}>
       <div className="text-2xl font-semibold">{item.name}</div>

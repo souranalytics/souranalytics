@@ -56,8 +56,8 @@ export const Footer: FunctionComponent<Props> = ({ site }) => {
   ])
 
   return (
-    <div className="border-t border-neutral-100 bg-neutral-50">
-      <footer className="container flex flex-col justify-between p-6 mx-auto text-sm text-neutral-500 lg:flex-row lg:justify-between">
+    <div className="border-t border-neutral-200">
+      <footer className="container flex flex-col justify-between p-6 mx-auto text-sm bg-neutral-50 text-neutral-500 lg:flex-row lg:justify-between lg:border-x lg:border-neutral-200">
         <p>
           {t('copyright', {
             year: getYear(new Date())

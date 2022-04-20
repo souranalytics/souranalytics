@@ -1,11 +1,12 @@
 import { FunctionComponent } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type Props = {
   className?: string
 }
 
 export const GherkinLogo: FunctionComponent<Props> = ({ className }) => (
-  <svg className={className} viewBox="0 0 48 48">
+  <svg className={twMerge('w-12 h-12', className)} viewBox="0 0 48 48">
     <path
       d="m36 16h-4c0-5.888 3.804-9 11-9v4c-7 0-7 3.13-7 5z"
       fill="#3ddab4"
