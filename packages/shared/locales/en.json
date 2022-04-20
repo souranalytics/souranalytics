@@ -2,6 +2,7 @@
   "account": "Account",
   "collaborators": "Collaborators",
   "copyright": "© {year} Sour Analytics. All rights reserved.",
+  "copyright_short": "© {year} Sour Analytics",
   "docs": "Docs",
   "events": "Events",
   "get_started": "Get started",

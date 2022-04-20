@@ -40,7 +40,7 @@ export const AuthLayout: FunctionComponent<Props> = ({ children, title }) => {
 
       <footer className="text-sm text-neutral-600">
         <p>
-          {t('copyright', {
+          {t('copyright_short', {
             year: getYear(new Date())
           })}
         </p>
