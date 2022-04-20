@@ -29,7 +29,7 @@ export const AuthLayout: FunctionComponent<Props> = ({ children, title }) => {
       <header className="flex items-center justify-between">
         <Link href="/">
           <a>
-            <SourAnalyticsLogo className="w-8 h-8" />
+            <SourAnalyticsLogo className="w-16 h-16" />
           </a>
         </Link>
       </header>
