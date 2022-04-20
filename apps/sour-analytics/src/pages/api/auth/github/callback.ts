@@ -11,13 +11,25 @@ const handler: NextApiHandler = async (req, res) => {
 
     const email = await github.fetchEmail(accessToken)
 
-    const { avatar, id, name } = await github.fetchProfile(accessToken)
+    const { avatar, id, name, username } = await github.fetchProfile(
+      accessToken
+    )
 
     const user = await prisma.user.upsert({
       create: {
         avatar,
+        collaborations: {
+          create: {
+            role: 'owner',
+            workspace: {
+              create: {
+                name: username
+              }
+            }
+          }
+        },
         email,
-        githubId: String(id),
+        githubId: id,
         name
       },
       update: {},

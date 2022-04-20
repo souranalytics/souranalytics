@@ -2,6 +2,7 @@ import axios from 'axios'
 
 type GitHubProfile = {
   id: number
+  username: string
   name: string
   avatar: string
 }
@@ -28,7 +29,7 @@ class GitHub {
 
   async fetchProfile(token: string): Promise<GitHubProfile> {
     const {
-      data: { avatar_url, id, name }
+      data: { avatar_url, id, login, name }
     } = await axios.request({
       headers: {
         authorization: `Bearer ${token}`
@@ -40,7 +41,8 @@ class GitHub {
     return {
       avatar: avatar_url,
       id,
-      name
+      name,
+      username: login
     }
   }
 
