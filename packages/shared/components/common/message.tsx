@@ -15,13 +15,13 @@ export const Message: FunctionComponent<Props> = ({
 }) => (
   <div
     className={twMerge(
-      'flex items-center p-3 rounded-lg',
+      'flex items-center p-3 rounded-lg border-2',
       className,
       type === 'success'
-        ? 'bg-emerald-300'
+        ? 'bg-emerald-200 border-emerald-300'
         : type === 'error'
-        ? 'bg-rose-300'
-        : 'bg-sky-300'
+        ? 'bg-rose-200 border-rose-300'
+        : 'bg-sky-200 border-sky-300'
     )}>
     <Icon name={type} />
 

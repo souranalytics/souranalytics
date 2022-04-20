@@ -1,8 +1,10 @@
-import { FormHTMLAttributes, FunctionComponent, PropsWithChildren } from 'react'
+import { FormEventHandler, FunctionComponent, PropsWithChildren } from 'react'
 
-type Props = PropsWithChildren<
-  Pick<FormHTMLAttributes<HTMLFormElement>, 'className' | 'onSubmit'>
->
+type Props = PropsWithChildren<{
+  className?: string
+
+  onSubmit?: FormEventHandler<HTMLFormElement>
+}>
 
 export const Form: FunctionComponent<Props> = ({
   children,

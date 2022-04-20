@@ -49,7 +49,7 @@ const NewWorkspace: NextPageWithLayout<Props> = () => {
         <Input
           hint={t('hint__workspace_name')}
           label={t('label__workspace_name')}
-          onChange={(event) => setName(event.target.value)}
+          onChange={setName}
           placeholder={t('name')}
           required
           type="text"

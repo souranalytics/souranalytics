@@ -1,25 +1,24 @@
-import { FunctionComponent, InputHTMLAttributes } from 'react'
+import { FunctionComponent } from 'react'
 
-type Props = Pick<
-  InputHTMLAttributes<HTMLInputElement>,
-  | 'autoCapitalize'
-  | 'autoCorrect'
-  | 'autoFocus'
-  | 'className'
-  | 'onChange'
-  | 'placeholder'
-  | 'required'
-  | 'type'
-  | 'value'
-> & {
+type Props = {
+  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters'
+  autoFocus?: boolean
+  className?: string
   hint?: string
   label?: string
+  placeholder?: string
+  required?: boolean
+  type?: 'email' | 'password' | 'text'
+  value?: string
+
+  onChange?: (value: string) => void
 }
 
 export const Input: FunctionComponent<Props> = ({
   className,
   hint,
   label,
+  onChange,
   ...props
 }) => (
   <label className={className}>
@@ -30,6 +29,7 @@ export const Input: FunctionComponent<Props> = ({
     <input
       {...props}
       className="w-full p-3 rounded-lg bg-neutral-200 focus:bg-white"
+      onChange={(event) => onChange?.(event.target.value)}
     />
 
     {hint && <div className="mt-2 text-xs text-neutral-600">{hint}</div>}

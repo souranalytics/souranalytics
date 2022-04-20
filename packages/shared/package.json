@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "build": "build-storybook",
+    "dev": "start-storybook --port 6006 --quiet",
     "lint": "eslint . --ext ts,tsx --fix"
   },
   "dependencies": {
@@ -15,12 +17,23 @@
     "zod": "^3.14.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-links": "^6.4.22",
+    "@storybook/addon-postcss": "^2.0.0",
+    "@storybook/builder-webpack5": "^6.4.22",
+    "@storybook/manager-webpack5": "^6.4.22",
+    "@storybook/react": "^6.4.22",
     "@types/lodash": "^4.14.182",
     "@types/pluralize": "^0.0.29",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
+    "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.5",
     "config": "*",
+    "postcss": "^8.4.12",
     "tsconfig": "*",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "webpack": "^5.72.0"
   }
 }
