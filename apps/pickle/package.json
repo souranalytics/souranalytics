@@ -8,7 +8,7 @@
     "db:dev": "env-cmd -f .env.local prisma migrate dev",
     "db:generate": "env-cmd -f .env.local prisma generate",
     "db:migrate": "env-cmd -f .env.production prisma migrate deploy",
-    "db:push": "env-cmd -f .env.local prisma db push",
+    "db:push": "env-cmd -f .env.local prisma db push --accept-data-loss",
     "db:seed": "env-cmd -f .env.local prisma db seed",
     "dev": "next dev --port 3001",
     "generate": "prisma generate",
