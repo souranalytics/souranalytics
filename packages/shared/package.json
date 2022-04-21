@@ -5,7 +5,8 @@
   "scripts": {
     "build": "build-storybook",
     "dev": "start-storybook --port 6006 --quiet",
-    "lint": "eslint . --ext ts,tsx --fix"
+    "lint": "eslint . --ext ts,tsx --fix",
+    "storybook": "chromatic"
   },
   "dependencies": {
     "axios": "^0.26.1",
@@ -30,7 +31,9 @@
     "@types/react-dom": "^18.0.1",
     "autoprefixer": "^10.4.4",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.5.4",
     "config": "*",
+    "env-cmd": "^10.1.0",
     "postcss": "^8.4.12",
     "tsconfig": "*",
     "typescript": "^4.6.3",

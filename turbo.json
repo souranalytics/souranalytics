@@ -25,6 +25,7 @@
     },
     "start": {
       "dependsOn": ["build"]
-    }
+    },
+    "storybook": {}
   }
 }

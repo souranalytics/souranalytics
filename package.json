@@ -21,7 +21,8 @@
     "lint": "turbo run lint",
     "postinstall": "turbo run generate",
     "prepare": "husky install",
-    "start": "turbo run start"
+    "start": "turbo run start",
+    "storybook": "turbo run storybook"
   },
   "devDependencies": {
     "husky": "^7.0.4",
