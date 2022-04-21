@@ -18,10 +18,10 @@ export const Message: FunctionComponent<Props> = ({
       'flex items-center p-3 rounded-lg border-2',
       className,
       type === 'success'
-        ? 'bg-emerald-200 border-emerald-300'
+        ? 'bg-emerald-100 border-emerald-300'
         : type === 'error'
-        ? 'bg-rose-200 border-rose-300'
-        : 'bg-sky-200 border-sky-300'
+        ? 'bg-rose-100 border-rose-300'
+        : 'bg-sky-100 border-sky-300'
     )}>
     <Icon name={type} />
 
